@@ -62,8 +62,8 @@ export const pageDocumentType = defineType({
       of: [
         { type: "heroSection" },
         { type: "categorySection" },
+        { type: "aboutSection" },
         // Add more section types here as you build them
-        // { type: 'aboutSection' },
         // { type: 'servicesSection' },
         // etc.
       ],

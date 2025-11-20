@@ -82,13 +82,40 @@ export interface CategorySectionData {
   categories: CategoryCard[];
 }
 
+export interface AboutNavLink {
+  _key: string;
+  title: string;
+  link: string;
+  isDefault?: boolean;
+}
+
+export interface AboutSectionData {
+  _type: "aboutSection";
+  _key: string;
+  title: string;
+  description: any[]; // PortableText content
+  displayType: "single" | "slider";
+  image?: {
+    asset: SanityImageAsset;
+    alt: string;
+  };
+  sliderImages?: {
+    _key: string;
+    asset: SanityImageAsset;
+    alt: string;
+  }[];
+  navLinks: AboutNavLink[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
 export interface PageData {
   _id: string;
   _type: "page";
   language: string;
   pageKey: string;
   pageTitle: string;
-  sections: (HeroSectionData | CategorySectionData)[];
+  sections: (HeroSectionData | CategorySectionData | AboutSectionData)[];
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string[];

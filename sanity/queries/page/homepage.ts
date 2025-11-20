@@ -102,6 +102,50 @@ export const homepageQuery = `*[_type == "page" && pageKey == "homepage" && lang
         },
         descriptions
       }
+    },
+    _type == "aboutSection" => {
+      title,
+      description,
+      displayType,
+      image{
+        asset->{
+          _id,
+          url,
+          metadata{
+            lqip,
+            dimensions{
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        alt
+      },
+      sliderImages[]{
+        _key,
+        asset->{
+          _id,
+          url,
+          metadata{
+            lqip,
+            dimensions{
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        alt
+      },
+      navLinks[]{
+        _key,
+        title,
+        link,
+        isDefault
+      },
+      ctaText,
+      ctaLink
     }
   },
   seoTitle,

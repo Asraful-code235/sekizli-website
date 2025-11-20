@@ -3,7 +3,12 @@ import { CategorySection } from "./components/CategorySection";
 import HeroSection from "./components/HeroSection";
 import { NewsSection } from "./components/NewsSection";
 import { StatsSection } from "./components/StatsSection";
-import { PageData, HeroSectionData, CategorySectionData } from "./types";
+import {
+  PageData,
+  HeroSectionData,
+  CategorySectionData,
+  AboutSectionData,
+} from "./types";
 
 interface HomePageProps {
   pageData?: PageData | null;
@@ -18,11 +23,15 @@ export const HomePage = ({ pageData }: HomePageProps) => {
     (section) => section._type === "categorySection"
   ) as CategorySectionData | undefined;
 
+  const aboutSection = pageData?.sections?.find(
+    (section) => section._type === "aboutSection"
+  ) as AboutSectionData | undefined;
+
   return (
     <>
       {heroSection && <HeroSection data={heroSection} />}
       {categorySection && <CategorySection data={categorySection} />}
-      <About />
+      {aboutSection && <About data={aboutSection} />}
       <StatsSection />
       <NewsSection />
     </>

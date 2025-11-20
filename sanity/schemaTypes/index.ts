@@ -10,6 +10,7 @@ import { themeType } from "../components/documents/themeType";
 import { pageDocumentType } from "../components/documents/pageDocumentType";
 import { heroSectionType } from "../components/sections/heroSectionType";
 import { categorySectionType } from "../components/sections/categorySectionType";
+import { aboutSectionType } from "../components/sections/aboutSectionType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pageDocumentType,
     heroSectionType,
     categorySectionType,
+    aboutSectionType,
   ],
 };
