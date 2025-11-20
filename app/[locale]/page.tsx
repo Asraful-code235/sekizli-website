@@ -21,7 +21,6 @@ export async function generateMetadata({
     });
   }
 
-  // Use SEO fields from page document, with fallbacks
   const seoTitle = homepageData.seoTitle || homepageData.pageTitle || "Home";
   const seoDescription =
     homepageData.seoDescription || "Welcome to our website";
@@ -43,13 +42,11 @@ export default async function Home({
 }) {
   const { locale } = await params;
 
-  // Fetch homepage data server-side
   const homepageData = await getHomepageData(locale);
 
   const { QueryClient, dehydrate } = await import("@tanstack/react-query");
   const queryClient = new QueryClient();
 
-  // Prefetch homepage data for client-side hydration
   await queryClient.prefetchQuery({
     queryKey: ["homepage", locale],
     queryFn: async () => {

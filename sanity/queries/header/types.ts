@@ -1,46 +1,86 @@
 export interface HeaderData {
-  _id: string
-  language: string
+  _id: string;
+  language: string;
   logo: {
     asset: {
-      _id: string
-      url: string
+      _id: string;
+      url: string;
       metadata: {
-        lqip?: string
+        lqip?: string;
         dimensions: {
-          width: number
-          height: number
-        }
-      }
-    }
-  }
-  languages: string[]
-  navigationItems: NavigationItem[]
-  callCta: CallCta
-  socialLinks?: SocialLink[]
+          width: number;
+          height: number;
+        };
+      };
+    };
+  };
+  languages: string[];
+  navigationItems: NavigationItem[];
+  callCta: CallCta;
+  socialLinks?: SocialLink[];
+  expandedMenu?: ExpandedMenu;
 }
 
 export interface NavigationItem {
-  title: string
-  link: string
+  title: string;
+  link: string;
 }
 
 export interface CallCta {
   icon?: {
     asset: {
-      _id: string
-      url: string
-    }
-  }
-  phone: string
+      _id: string;
+      url: string;
+    };
+  };
+  phone: string;
 }
 
 export interface SocialLink {
   icon: {
     asset: {
-      _id: string
-      url: string
-    }
-  }
-  link: string
+      _id: string;
+      url: string;
+    };
+  };
+  link: string;
+}
+
+export interface ExpandedMenu {
+  customerService?: {
+    phone: string;
+    label: string;
+  };
+  location?: {
+    label: string;
+    mapLink: string;
+  };
+  menuGroups?: MenuGroup[];
+  featuredCategories?: FeaturedCategory[];
+  copyrightText?: string;
+}
+
+export interface MenuGroup {
+  title: string;
+  url?: string;
+  links?: {
+    label: string;
+    url: string;
+  }[];
+}
+
+export interface FeaturedCategory {
+  highlight: string;
+  title: string;
+  image: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+  };
+  list: {
+    title: string;
+    url: string;
+  }[];
+  description: string[];
 }

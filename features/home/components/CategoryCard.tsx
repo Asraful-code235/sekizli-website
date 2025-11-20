@@ -52,11 +52,11 @@ export function CategoryCard({
         `}
       >
         {/* LEFT HALF — Content + List */}
-        <div className='w-1/2'>
+        <div className="w-1/2">
           <h2
             className={`lg:text-2xl md:text-xl xl:text-3xl font-bold mb-2 ${isLeft ? "text-left" : "text-right"}`}
           >
-            <span className='text-yellow-400'>{highlight}</span>
+            <span className="text-brand-secondary">{highlight}</span>
             <br />
             {title}
           </h2>
@@ -102,11 +102,11 @@ export function CategoryCard({
             `}
           >
             <Image
-              src='/favicon.svg'
-              alt='icon'
+              src="/favicon.svg"
+              alt="icon"
               width={120}
               height={120}
-              className='opacity-20 w-16 sm:w-20 md:w-28 h-auto'
+              className="opacity-20 w-16 sm:w-20 md:w-28 h-auto"
               priority
             />
           </div>
@@ -121,7 +121,7 @@ export function CategoryCard({
               src={displayImage}
               alt={title}
               fill
-              className='object-contain opacity-95'
+              className="object-contain opacity-95"
             />
           </div>
 

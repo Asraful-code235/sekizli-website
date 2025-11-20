@@ -1,4 +1,4 @@
-import { SanityAPI } from '@/lib/api'
+import { SanityAPI } from "@/lib/api";
 
 /**
  * GROQ query to fetch header data by language
@@ -42,18 +42,56 @@ export const headerQuery = `
       }
     },
     link
+  },
+  expandedMenu{
+    customerService{
+      phone,
+      label
+    },
+    location{
+      label,
+      mapLink
+    },
+    menuGroups[]{
+      title,
+      url,
+      links[]{
+        label,
+        url
+      }
+    },
+    featuredCategories[]{
+      highlight,
+      title,
+      image{
+        asset->{
+          _id,
+          url
+        }
+      },
+      list[]{
+        ...,
+        "url": link
+      },
+      description
+    },
+    copyrightText
   }
 }
-`
+`;
 
 /**
  * Fetch header data by language
  * @param language - Language code (en, tr, es, ar, ru)
  */
-export async function getHeaderData(language: string = 'en') {
-  return SanityAPI.fetch(headerQuery, { language }, {
-    useCdn: true,
-    revalidate: 3600, // 1 hour
-    tags: ['header']
-  })
+export async function getHeaderData(language: string = "en") {
+  return SanityAPI.fetch(
+    headerQuery,
+    { language },
+    {
+      useCdn: true,
+      revalidate: 3600, // 1 hour
+      tags: ["header"],
+    }
+  );
 }

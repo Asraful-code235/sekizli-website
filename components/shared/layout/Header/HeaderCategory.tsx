@@ -8,7 +8,7 @@ export interface HeaderCategoryCardProps {
   highlight: string;
   title: string;
   image: string;
-  list?: string[];
+  list?: { title: string; url: string }[];
   listImages?: string[];
   description?: string[];
   position?: "left" | "right";
@@ -27,6 +27,8 @@ export default function HeaderCategoryCard({
 
   // final displayed image
   const displayImage = hoveredImage || image;
+
+  console.log(list);
   return (
     <div
       className={`
@@ -44,7 +46,7 @@ export default function HeaderCategoryCard({
           <h2
             className={`text-3xl font-bold mb-2 ${isLeft ? "text-left" : "text-right"}`}
           >
-            <span className="text-yellow-400">{highlight}</span>
+            <span className="text-brand-secondary">{highlight}</span>
             <br />
             {title}
           </h2>
@@ -55,7 +57,7 @@ export default function HeaderCategoryCard({
             }`}
           />
 
-          {list.length > 0 && (
+          {list?.length > 0 && (
             <ul
               className={`space-y-3 text-xs font-medium tracking-wider ${
                 isLeft ? "text-left" : "text-right"
@@ -68,8 +70,8 @@ export default function HeaderCategoryCard({
                   onMouseLeave={() => setHoveredImage(null)}
                 >
                   <CategoryNavItem
-                    label={item}
-                    href={`/your-route/${item.toLowerCase().replace(/ /g, "-")}`}
+                    label={item?.title || "Link"}
+                    href={item?.url || "#"}
                     position={position}
                   />
                 </li>

@@ -19,7 +19,7 @@ export function Header({ data, locale }: HeaderProps) {
           <Logo logo={data.logo} locale={locale} />
           <div className="flex items-center flex-row-reverse md:flex-row h-full lg:gap-5">
             <div className="h-full">
-              <Menubar logo={data.logo} locale={locale} />
+              <Menubar data={data} />
               <LanguageDropdown availableLanguages={data.languages} />
             </div>
             <NavLinks items={data.navigationItems} locale={locale} />

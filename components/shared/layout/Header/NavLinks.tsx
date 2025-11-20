@@ -4,7 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavigationItem } from "@/sanity/queries/header/types";
 import { useState } from "react";
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import IntroFeatureSection from "./IntroFeatureSection";
 import { CategoryCard } from "@/features/home/components/CategoryCard";
 
@@ -30,12 +36,10 @@ export function NavLinks({ items, locale }: NavLinksProps) {
 
   return (
     <div
-      className='hidden lg:flex items-center gap-3 lg:gap-5 relative'
+      className="hidden lg:flex items-center gap-3 lg:gap-5 relative"
       onMouseLeave={() => setOpenSheet(null)}
     >
-      <nav
-        className='flex items-center gap-3 lg:gap-5'
-      >
+      <nav className="flex items-center gap-3 lg:gap-5 z-40">
         {items.map((item, index) => {
           const href = item.link.startsWith("/")
             ? `/${locale}${item.link}`
@@ -54,13 +58,13 @@ export function NavLinks({ items, locale }: NavLinksProps) {
               onMouseEnter={
                 isSheetTrigger ? () => handleHover(title) : undefined
               }
-              className={`relative group xl:text-sm text-xs font-medium border-r border-gray-500 pr-3 ${
-                isActive ? "text-brand-secondary" : "text-gray-700"
+              className={`relative group xl:text-[13px] text-xs font-semibold border-r border-gray-500 pr-3 ${
+                isActive ? "text-brand-secondary" : "text-brand-primary"
               }`}
             >
               {/* animated top line */}
               <span
-                className='
+                className="
                 absolute left-0 -top-2
                 h-0.75 w-full
                 origin-right scale-x-0
@@ -68,7 +72,19 @@ export function NavLinks({ items, locale }: NavLinksProps) {
                 group-hover:scale-x-100
                 group-hover:bg-brand-primary
                 transition-all duration-300
-              '
+              "
+              ></span>
+              <span
+                className="
+                absolute left-0 -top-2
+                h-0.75 w-full
+                origin-left scale-x-40
+                bg-brand-secondary
+                group-hover:scale-x-0
+                opacity-0
+                group-hover:opacity-100
+                transition-all duration-500
+              "
               ></span>
 
               {item.title}
@@ -84,18 +100,18 @@ export function NavLinks({ items, locale }: NavLinksProps) {
         }}
       >
         <SheetContent
-          side='left'
-          className='min-w-screen h-screen p-8 bg-gray-100 flex items-center justify-center'
+          side="left"
+          className="min-w-screen h-screen p-8 bg-gray-100 flex items-center justify-center"
         >
-          <SheetHeader className='px-0'>
+          <SheetHeader className="px-0">
             <SheetTitle></SheetTitle>
           </SheetHeader>
           {openSheet === "corporate" && (
-            <div className=''>
+            <div className="">
               <IntroFeatureSection
-                title='Expert in High Precision and Balance'
-                subtitle='Millions of Hours of Experience, Customer Satisfaction'
-                image='/leftInt.png'
+                title="Expert in High Precision and Balance"
+                subtitle="Millions of Hours of Experience, Customer Satisfaction"
+                image="/leftInt.png"
                 items={[
                   { label: "About Us", href: "/about" },
                   { label: "Our Quality Policy", href: "/quality" },
@@ -111,13 +127,13 @@ export function NavLinks({ items, locale }: NavLinksProps) {
             </div>
           )}
           {openSheet === "products" && (
-            <div className='flex flex-col lg:flex-row gap-10'>
+            <div className="flex flex-col lg:flex-row gap-10">
               <CategoryCard
-                highlight='Electric'
-                title='Crane Systems'
-                bgColor='bg-[#3f3f3f]'
-                image='/elektirik.png'
-                position='left'
+                highlight="Electric"
+                title="Crane Systems"
+                bgColor="bg-[#3f3f3f]"
+                image="/elektirik.png"
+                position="left"
                 list={[
                   "OVERHEAD TRAVELING CRANES",
                   "LIFTING GROUPS",
@@ -145,10 +161,10 @@ export function NavLinks({ items, locale }: NavLinksProps) {
 
               {/* Section 2 */}
               <CategoryCard
-                highlight='Spare'
-                title='Parts'
-                bgColor='bg-[#3f3f3f]'
-                image='/kancablokları.png'
+                highlight="Spare"
+                title="Parts"
+                bgColor="bg-[#3f3f3f]"
+                image="/kancablokları.png"
                 list={["CRANE SPARE PARTS"]}
                 listImages={["/elektirik.png"]}
                 description={[
