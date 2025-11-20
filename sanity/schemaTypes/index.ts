@@ -4,7 +4,18 @@ import {blockContentType} from './blockContentType'
 import {categoryType} from './categoryType'
 import {postType} from './postType'
 import {authorType} from './authorType'
+import {headerType} from '../components/documents/headerType'
+import {footerType} from '../components/documents/footerType'
+import {themeType} from '../components/documents/themeType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType],
+  types: [
+    blockContentType, 
+    categoryType, 
+    postType, 
+    authorType,
+    headerType,
+    footerType,
+    themeType
+  ],
 }

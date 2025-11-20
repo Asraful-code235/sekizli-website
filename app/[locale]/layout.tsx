@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { isValidLanguageCode, getLanguageDirection } from "@/lib/i18n";
 import { getHeaderData } from "@/sanity/queries/header/header";
 import { HeaderData } from "@/sanity/queries/header/types";
+import { getFooterData } from "@/sanity/queries/footer/footer";
+import { FooterData } from "@/sanity/queries/footer/types";
 import { Header } from "@/components/shared/layout/Header";
 import Footer from "@/components/shared/layout/Footer/Footer";
 
@@ -16,6 +18,7 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
   const headerData = (await getHeaderData(locale)) as HeaderData | null;
+  const footerData = (await getFooterData(locale)) as FooterData | null;
 
   if (!isValidLanguageCode(locale)) {
     notFound();
@@ -26,7 +29,7 @@ export default async function LocaleLayout({
     <div lang={locale} dir={dir}>
       {headerData && <Header data={headerData} locale={locale} />}
       <div>{children}</div>
-      <Footer />
+      {footerData && <Footer data={footerData} />}
     </div>
   );
 }

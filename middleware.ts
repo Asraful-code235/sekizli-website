@@ -7,3 +7,4 @@ export const config = {
   // Match only internationalized pathnames
   matcher: ["/", "/(tr|en|ar)/:path*"],
 };
+ 

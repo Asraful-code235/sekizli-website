@@ -1,0 +1,35 @@
+import {defineField, defineType} from 'sanity'
+
+export const themeType = defineType({
+  name: 'theme',
+  title: 'Theme Configuration',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'primaryColor',
+      title: 'Primary Brand Color',
+      type: 'color',
+      description: 'The main color used for buttons, links, and accents.',
+      options: {
+        disableAlpha: true,
+      },
+    }),
+    defineField({
+      name: 'secondaryColor',
+      title: 'Secondary Brand Color',
+      type: 'color',
+      description: 'Secondary color for contrast elements.',
+      options: {
+        disableAlpha: true,
+      },
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Theme Configuration',
+      }
+    },
+  },
+})
+

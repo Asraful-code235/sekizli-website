@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/lib/query-client";
 import { generatePageMetadata, baseViewport } from "@/lib/metadata";
+import { ThemeProvider } from "@/components/theme-provider";
+import { getThemeData, ThemeColors } from "@/sanity/queries/theme/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,19 +24,36 @@ export const metadata: Metadata = generatePageMetadata({
 
 export const viewport: Viewport = baseViewport;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeData = (await getThemeData()) as ThemeColors | null;
+
+  // Generate CSS variables for server-side injection
+  const cssVariables = {
+    ...(themeData?.primaryColor?.hex && { '--primary-brand': themeData.primaryColor.hex }),
+    ...(themeData?.secondaryColor?.hex && { '--secondary-brand': themeData.secondaryColor.hex }),
+  } as React.CSSProperties;
+
   return (
     <html suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white text-black`}
         suppressHydrationWarning
+        style={cssVariables}
       >
         <QueryProvider>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            themeData={themeData}
+          >
+            {children}
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

@@ -25,8 +25,8 @@ export function NavLinks({ items, locale }: NavLinksProps) {
           <Link
             key={index}
             href={href}
-            className={`text-sm font-medium transition-colors hover:text-[#FDD835] border-r border-gray-500 pr-2 ${
-              isActive ? 'text-[#FDD835]' : 'text-gray-700'
+            className={`text-sm font-medium transition-colors hover:text-brand-secondary border-r border-gray-500 pr-2 ${
+              isActive ? 'text-brand-secondary' : 'text-gray-700'
             }`}
           >
             {item.title}

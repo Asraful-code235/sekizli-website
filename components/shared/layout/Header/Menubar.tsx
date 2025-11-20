@@ -44,8 +44,8 @@ function Menubar({ logo, locale }: LogoProps) {
   return (
     <div className="">
       <Sheet>
-        <SheetTrigger asChild className="bg-teal-700 h-20 border-b-3 border-b-yellow-300 w-full">
-          <Button variant='outline' className="hover:bg-teal-600 cursor-pointer rounded-none" >
+        <SheetTrigger asChild className="bg-brand-primary h-20 border-b-3 border-b-brand-secondary w-full">
+          <Button variant='outline' className="hover:bg-brand-primary/90 cursor-pointer rounded-none" >
             <Menu color="white"/>
           </Button>
         </SheetTrigger>
@@ -128,7 +128,7 @@ function Menubar({ logo, locale }: LogoProps) {
                   >
                     <MapPin
                       size={22}
-                      className='transition-colors hover:stroke-yellow-300'
+                      className='transition-colors hover:stroke-brand-secondary'
                     />
                   </Link>
                 </div>
@@ -139,16 +139,16 @@ function Menubar({ logo, locale }: LogoProps) {
                 <nav className='space-y-4'>
                   {/* Top Level Links */}
                   <div className='space-y-2 font-semibold'>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       Corporate
                     </Link>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       Production
                     </Link>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       Quality
                     </Link>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       Get a Quote
                     </Link>
                   </div>
@@ -156,23 +156,23 @@ function Menubar({ logo, locale }: LogoProps) {
                   <div className='space-y-2'>
                     <Link
                       href='#'
-                      className='font-semibold block hover:text-yellow-400'
+                      className='font-semibold block hover:text-brand-secondary'
                     >
                       Products
                     </Link>
                     <ul className='text-sm space-y-2'>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Electric Crane Systems
                         </Link>
                       </li>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Electric Load Carrying Platform
                         </Link>
                       </li>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Spare Parts
                         </Link>
                       </li>
@@ -180,10 +180,10 @@ function Menubar({ logo, locale }: LogoProps) {
                   </div>
                   {/* Other Sections */}
                   <div className='space-y-2 font-semibold'>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       Those Who Prefer Sekizli
                     </Link>
-                    <Link className='block hover:text-yellow-400' href='#'>
+                    <Link className='block hover:text-brand-secondary' href='#'>
                       News & Announcements
                     </Link>
                   </div>
@@ -191,28 +191,28 @@ function Menubar({ logo, locale }: LogoProps) {
                   <div className='space-y-2'>
                     <Link
                       href='#'
-                      className='font-semibold block hover:text-yellow-400'
+                      className='font-semibold block hover:text-brand-secondary'
                     >
                       Media
                     </Link>
                     <ul className='text-sm space-y-2'>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Online Catalog
                         </Link>
                       </li>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Trade Shows
                         </Link>
                       </li>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Photo Gallery
                         </Link>
                       </li>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Video Gallery
                         </Link>
                       </li>
@@ -221,7 +221,7 @@ function Menubar({ logo, locale }: LogoProps) {
                   {/* Service */}
                   <div>
                     <Link
-                      className='font-semibold hover:text-yellow-400 block'
+                      className='font-semibold hover:text-brand-secondary block'
                       href='#'
                     >
                       Service
@@ -231,13 +231,13 @@ function Menubar({ logo, locale }: LogoProps) {
                   <div>
                     <Link
                       href='#'
-                      className='font-semibold block hover:text-yellow-400 mb-2'
+                      className='font-semibold block hover:text-brand-secondary mb-2'
                     >
                       Contact
                     </Link>
                     <ul className='text-sm space-y-2'>
                       <li>
-                        <Link href='#' className='hover:text-yellow-400'>
+                        <Link href='#' className='hover:text-brand-secondary'>
                           » Location and Contact Information
                         </Link>
                       </li>
