@@ -37,7 +37,6 @@ export default async function RootLayout({
 }>) {
   const themeData = (await getThemeData()) as ThemeColors | null;
 
-  // Generate CSS variables for server-side injection
   const cssVariables = {
     ...(themeData?.primaryColor?.hex && {
       "--primary-brand": themeData.primaryColor.hex,
