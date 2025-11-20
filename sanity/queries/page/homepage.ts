@@ -146,6 +146,42 @@ export const homepageQuery = `*[_type == "page" && pageKey == "homepage" && lang
       },
       ctaText,
       ctaLink
+    },
+    _type == "statsSection" => {
+      bgImage{
+        asset->{
+          _id,
+          url,
+          metadata{
+            lqip,
+            dimensions{
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        alt
+      },
+      image{
+        asset->{
+          _id,
+          url,
+          metadata{
+            lqip,
+            dimensions{
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        alt
+      },
+      title,
+      paragraphs,
+      ctaText,
+      ctaLink
     }
   },
   seoTitle,

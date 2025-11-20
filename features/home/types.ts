@@ -109,13 +109,35 @@ export interface AboutSectionData {
   ctaLink?: string;
 }
 
+export interface StatsSectionData {
+  _type: "statsSection";
+  _key: string;
+  bgImage?: {
+    asset: SanityImageAsset;
+    alt?: string;
+  };
+  image: {
+    asset: SanityImageAsset;
+    alt: string;
+  };
+  title: string[];
+  paragraphs: string[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
 export interface PageData {
   _id: string;
   _type: "page";
   language: string;
   pageKey: string;
   pageTitle: string;
-  sections: (HeroSectionData | CategorySectionData | AboutSectionData)[];
+  sections: (
+    | HeroSectionData
+    | CategorySectionData
+    | AboutSectionData
+    | StatsSectionData
+  )[];
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string[];

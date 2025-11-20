@@ -8,6 +8,7 @@ import {
   HeroSectionData,
   CategorySectionData,
   AboutSectionData,
+  StatsSectionData,
 } from "./types";
 
 interface HomePageProps {
@@ -27,12 +28,16 @@ export const HomePage = ({ pageData }: HomePageProps) => {
     (section) => section._type === "aboutSection"
   ) as AboutSectionData | undefined;
 
+  const statsSection = pageData?.sections?.find(
+    (section) => section._type === "statsSection"
+  ) as StatsSectionData | undefined;
+
   return (
     <>
       {heroSection && <HeroSection data={heroSection} />}
       {categorySection && <CategorySection data={categorySection} />}
       {aboutSection && <About data={aboutSection} />}
-      <StatsSection />
+      {statsSection && <StatsSection data={statsSection} />}
       <NewsSection />
     </>
   );

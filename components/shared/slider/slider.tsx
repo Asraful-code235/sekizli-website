@@ -5,11 +5,13 @@ import React, { useEffect, useState } from "react";
 function ImageSlider({
   images,
   className,
+  imageClassName,
   indicator = true,
   onSlideChange,
 }: {
   images: string[];
   className: string;
+  imageClassName?: string;
   indicator?: boolean;
   onSlideChange?: (index: number) => void;
 }) {
@@ -23,7 +25,7 @@ function ImageSlider({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -36,14 +38,15 @@ function ImageSlider({
           src={img}
           alt="slide"
           fill
-          className={`object-contain transition-opacity duration-700 absolute inset-0 z-0
+          className={`transition-opacity duration-700 absolute inset-0 z-0
             ${index === currentIndex ? "opacity-100" : "opacity-0"}
+            ${imageClassName || "object-contain"}
           `}
         />
       ))}
 
       {indicator && (
-        <div className="absolute bottom-1/8 right-0 transform -translate-x-1/2 flex gap-2 z-30">
+        <div className="absolute bottom-6 right-0 transform -translate-x-1/2 flex gap-2 z-30">
           {images.map((_, index) => (
             <button
               key={index}

@@ -11,14 +11,14 @@ export function SocialLinks({ links }: SocialLinksProps) {
   }
 
   return (
-    <div className="flex items-center xl:gap-3 gap-0.5">
+    <div className="flex items-center  gap-0.5">
       {links.map((social, index) => (
         <a
           key={index}
           href={social.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="xl:w-9 xl:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 rounded-full bg-gray-200 hover:bg-brand-secondary transition-colors flex items-center justify-center"
+          className="xl:w-9 xl:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 hover:bg-brand-secondary transition-colors flex items-center justify-center"
           aria-label={`Social link ${index + 1}`}
         >
           <Image
@@ -26,7 +26,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
             alt="Social icon"
             width={18}
             height={18}
-            className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5"
+            className="w-3.5 h-3.5 md:w-8 md:h-8 invert-social"
           />
         </a>
       ))}

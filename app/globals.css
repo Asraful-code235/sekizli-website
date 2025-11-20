@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -201,4 +202,9 @@
       direction: rtl;
     }
   }
+}
+
+.invert-social {
+  filter: invert(61%) sepia(8%) saturate(8%) hue-rotate(314deg) brightness(103%)
+    contrast(92%);
 }

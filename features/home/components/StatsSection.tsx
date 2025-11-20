@@ -2,49 +2,41 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { urlFor } from "@/sanity/lib/image";
+import { StatsSectionData } from "../types";
 
-const statsData = {
-  bgImage: "/bg.png",
-  hoverBg: "#0f766e",
-  image: "/leftInt.png",
+interface StatsSectionProps {
+  data?: StatsSectionData;
+}
 
-  title: [
-    "Thousands of",
-    "customers, tons of",
-    "cargo, millions of",
-    "hours of",
-    "operational time",
-  ],
+export function StatsSection({ data }: StatsSectionProps) {
+  if (!data) {
+    return null;
+  }
 
-  paragraphs: [
-    "At Sekizli Crane, with nearly half a century of manufacturing experience, our expert R&D and production team provides systems that carry tons of cargo to thousands of customers.",
-    "With our 15,000 m² production facility, advanced technological infrastructure, and extensive machinery park, we proudly represent our country worldwide.",
-  ],
+  const { bgImage, image, title, paragraphs, ctaText, ctaLink } = data;
 
-  button: {
-    labelLine1: "Crane",
-    labelLine2: "Details",
-    href: "#", // link from sanity
-  },
-};
+  // Get image URLs
+  const bgImageUrl = bgImage?.asset ? urlFor(bgImage.asset)?.url() : null;
+  const mainImageUrl = image?.asset ? urlFor(image.asset)?.url() : "";
 
-export function StatsSection() {
   return (
-    <section className="py-0 md:py-10 sm:py-0 lg:py-0">
+    <section className="pt-12 md:py-10 sm:py-0 lg:py-0">
       <div className="max-w-[1500px] mx-auto px-4">
         <div
-          className="rounded-3xl p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-brand-primary/80"
+          className="rounded-3xl px-6 pb-6 pt-28 sm:p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-brand-primary/80"
           style={{
-            backgroundImage: `url('${statsData.bgImage}')`,
+            backgroundImage: bgImageUrl ? `url('${bgImageUrl}')` : undefined,
           }}
         >
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 grid-cols-2 gap-4 lg:gap-12 items-start">
             {/* LEFT IMAGE */}
-            <div className="relative">
-              <div className="relative z-10 pt-12">
+            <div className="relative col-start-2 row-start-1 lg:col-auto lg:row-auto">
+              <div className="relative z-10 pt-2 lg:pt-12">
                 <Image
-                  src={statsData.image}
-                  alt="stats image"
+                  src={mainImageUrl}
+                  alt={image.alt || "Stats image"}
                   width={400}
                   height={400}
                   className="w-full"
@@ -53,42 +45,45 @@ export function StatsSection() {
             </div>
 
             {/* RIGHT CONTENT */}
-            <div>
+            <div className="contents lg:block">
               {/* Dynamic Title */}
-              <h2 className="text-3xl lg:text-4xl font-bold mb-8 leading-tight">
-                {statsData.title.map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </h2>
+              {title && title.length > 0 && (
+                <h2 className="col-start-1 row-start-1 lg:col-auto lg:row-auto text-[13px] sm:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8 leading-tight">
+                  {title.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </h2>
+              )}
 
               {/* Dynamic Paragraphs */}
-              {statsData.paragraphs.map((text, i) => (
-                <p
-                  key={i}
-                  className="text-sm text-gray-300 mb-4 leading-relaxed"
-                >
-                  {text}
-                </p>
-              ))}
+              {paragraphs &&
+                paragraphs.map((text, i) => (
+                  <p
+                    key={i}
+                    className="col-span-2 lg:col-auto text-[10px] sm:text-sm text-gray-300 leading-relaxed"
+                  >
+                    {text}
+                  </p>
+                ))}
 
               {/* Dynamic Button */}
-              <a
-                href={statsData.button.href}
-                className="inline-flex items-center space-x-3 text-sm text-gray-300 hover:text-white transition-colors group mt-4"
-              >
-                <span className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-brand-primary/80 transition-colors">
-                  <ArrowRight size={18} />
-                </span>
-
-                <span className="font-semibold">
-                  {statsData.button.labelLine1}
-                  <br />
-                  {statsData.button.labelLine2}
-                </span>
-              </a>
+              {ctaText && ctaLink && (
+                <Link
+                  href={ctaLink}
+                  className="col-span-2 lg:col-auto inline-flex items-center space-x-3 text-[10px] sm:text-sm text-gray-300 hover:text-white transition-colors group mt-4"
+                >
+                  <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-brand-primary/80 transition-colors">
+                    <ArrowRight
+                      size={18}
+                      className="w-3 h-3 sm:w-auto sm:h-auto"
+                    />
+                  </span>
+                  <span className="font-semibold">{ctaText}</span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

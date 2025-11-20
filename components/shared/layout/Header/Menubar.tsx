@@ -104,13 +104,13 @@ function Menubar({ data }: MenubarProps) {
                         href={social.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1 rounded-full bg-white"
+                        className=" "
                       >
                         {social.icon?.asset?.url && (
                           <img
                             src={social.icon.asset.url}
                             alt="social icon"
-                            className="size-4 sm:size-5 md:size-6 lg:size-7 p-0.5"
+                            className="size-4 sm:size-5 md:size-6 lg:size-8 p-0.5 invert-social"
                           />
                         )}
                       </a>
