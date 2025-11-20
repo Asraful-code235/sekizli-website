@@ -1,24 +1,24 @@
-import { HeaderData } from '@/sanity/queries/header/types'
-import { Logo } from './Logo'
-import { LanguageDropdown } from './LanguageDropdown'
-import { NavLinks } from './NavLinks'
-import { PhoneButton } from './PhoneButton'
-import { SocialLinks } from './SocialLinks'
-import Menubar from './Menubar'
+import { HeaderData } from "@/sanity/queries/header/types";
+import { Logo } from "./Logo";
+import { LanguageDropdown } from "./LanguageDropdown";
+import { NavLinks } from "./NavLinks";
+import { PhoneButton } from "./PhoneButton";
+import { SocialLinks } from "./SocialLinks";
+import Menubar from "./Menubar";
 
 interface HeaderProps {
-  data: HeaderData
-  locale: string
+  data: HeaderData;
+  locale: string;
 }
 
 export function Header({ data, locale }: HeaderProps) {
   return (
-    <header className='sticky top-0 z-60 bg-white border-b border-gray-200'>
-      <div className='container mx-auto px-1'>
-        <div className='flex items-center justify-between h-20'>
+    <header className="sticky top-0 z-60 bg-white border-b border-gray-200">
+      <div className="container mx-auto px-1">
+        <div className="flex items-center justify-between h-16 md:h-24">
           <Logo logo={data.logo} locale={locale} />
-          <div className='flex items-center flex-row-reverse md:flex-row h-full lg:gap-5'>
-            <div className='h-full'>
+          <div className="flex items-center flex-row-reverse md:flex-row h-full lg:gap-5">
+            <div className="h-full">
               <Menubar logo={data.logo} locale={locale} />
               <LanguageDropdown availableLanguages={data.languages} />
             </div>

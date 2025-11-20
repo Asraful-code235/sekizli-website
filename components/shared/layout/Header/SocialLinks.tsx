@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { SocialLink } from '@/sanity/queries/header/types'
+import Image from "next/image";
+import { SocialLink } from "@/sanity/queries/header/types";
 
 interface SocialLinksProps {
-  links?: SocialLink[]
+  links?: SocialLink[];
 }
 
 export function SocialLinks({ links }: SocialLinksProps) {
   if (!links || links.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -18,7 +18,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
           href={social.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="lg:w-9 lg:h-9 w-6 h-6 rounded-full bg-gray-200 hover:bg-brand-secondary transition-colors flex items-center justify-center"
+          className="lg:w-9 lg:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 rounded-full bg-gray-200 hover:bg-brand-secondary transition-colors flex items-center justify-center"
           aria-label={`Social link ${index + 1}`}
         >
           <Image
@@ -26,10 +26,10 @@ export function SocialLinks({ links }: SocialLinksProps) {
             alt="Social icon"
             width={18}
             height={18}
-            className="w-4.5 h-4.5"
+            className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5"
           />
         </a>
       ))}
     </div>
-  )
+  );
 }
