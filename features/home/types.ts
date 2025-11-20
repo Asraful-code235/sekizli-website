@@ -52,13 +52,43 @@ export interface PageSEO {
   canonicalUrl?: string;
 }
 
+export interface CategoryListItem {
+  _key: string;
+  title: string;
+  link: string;
+  image?: {
+    asset: SanityImageAsset;
+    alt?: string;
+  };
+}
+
+export interface CategoryCard {
+  _key: string;
+  highlight: string;
+  title: string;
+  bgColor: string;
+  image: {
+    asset: SanityImageAsset;
+    alt: string;
+  };
+  position: "left" | "right";
+  listItems: CategoryListItem[];
+  descriptions?: string[];
+}
+
+export interface CategorySectionData {
+  _type: "categorySection";
+  _key: string;
+  categories: CategoryCard[];
+}
+
 export interface PageData {
   _id: string;
   _type: "page";
   language: string;
   pageKey: string;
   pageTitle: string;
-  sections: HeroSectionData[];
+  sections: (HeroSectionData | CategorySectionData)[];
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string[];

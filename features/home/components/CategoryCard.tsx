@@ -3,15 +3,20 @@ import CategoryNavItem from "@/components/shared/layout/Header/CategoryNavItem";
 import Image from "next/image";
 import { useState } from "react";
 
+export interface CategoryListItemProps {
+  title: string;
+  link: string;
+  image?: string;
+}
+
 export interface CategoryCardProps {
   highlight: string;
   title: string;
   bgColor: string;
   bgImage?: string;
   image: string;
-  list?: string[];
-  listImages?: string[];
-  description?: string[];
+  listItems?: CategoryListItemProps[];
+  descriptions?: string[];
   position?: "left" | "right";
 }
 
@@ -21,16 +26,20 @@ export function CategoryCard({
   bgColor = "bg-[#0f766e]",
   bgImage = "/rightBg.png",
   image,
-  list = [],
-  listImages = [],
-  description = [],
+  listItems = [],
+  descriptions = [],
   position = "right",
 }: CategoryCardProps) {
   const isLeft = position === "left";
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [hoveredImage, setHoveredImage] = useState<string>(image);
+  const displayImage = hoveredImage;
 
-  // final displayed image
-  const displayImage = hoveredImage || image;
+  const handleMouseEnter = (itemImage?: string) => {
+    if (itemImage) {
+      setHoveredImage(itemImage);
+    }
+  };
+
   return (
     <div
       className={`
@@ -67,21 +76,17 @@ export function CategoryCard({
             }`}
           />
 
-          {list.length > 0 && (
+          {listItems.length > 0 && (
             <ul
               className={`space-y-3 text-xs font-medium tracking-wider ${
                 isLeft ? "text-left" : "text-right"
               }`}
             >
-              {list.map((item, idx) => (
-                <li
-                  key={idx}
-                  onMouseEnter={() => setHoveredImage(listImages[idx] || null)}
-                  onMouseLeave={() => setHoveredImage(null)}
-                >
+              {listItems.map((item: CategoryListItemProps, idx: number) => (
+                <li key={idx} onMouseEnter={() => handleMouseEnter(item.image)}>
                   <CategoryNavItem
-                    label={item}
-                    href={`/your-route/${item.toLowerCase().replace(/ /g, "-")}`}
+                    label={item.title}
+                    href={item.link}
                     position={position}
                   />
                 </li>
@@ -91,13 +96,17 @@ export function CategoryCard({
 
           <div
             className={`
-               text-xs text-gray-100 max-sm:hidden 
+               text-xs text-gray-100 max-sm:hidden mt-36
               ${isLeft ? "text-right hidden" : "text-right"}
             `}
           >
             {isLeft
-              ? description.map((text, i) => <p key={i}>▸ {text}</p>)
-              : description.map((text, i) => <p key={i}>▸ {text}</p>)}
+              ? descriptions.map((text: string, i: number) => (
+                  <p key={i}>▸ {text}</p>
+                ))
+              : descriptions.map((text: string, i: number) => (
+                  <p key={i}>▸ {text}</p>
+                ))}
           </div>
         </div>
 
@@ -144,8 +153,12 @@ export function CategoryCard({
             `}
           >
             {isLeft
-              ? description.map((text, i) => <p key={i}>▸ {text}</p>)
-              : description.map((text, i) => <p key={i}>{text}◂</p>)}
+              ? descriptions.map((text: string, i: number) => (
+                  <p key={i}>▸ {text}</p>
+                ))
+              : descriptions.map((text: string, i: number) => (
+                  <p key={i}>{text}◂</p>
+                ))}
           </div>
         </div>
       </div>
@@ -156,8 +169,12 @@ export function CategoryCard({
             `}
       >
         {isLeft
-          ? description.map((text, i) => <p key={i}>▸ {text}</p>)
-          : description.map((text, i) => <p key={i}>▸ {text}</p>)}
+          ? descriptions.map((text: string, i: number) => (
+              <p key={i}>▸ {text}</p>
+            ))
+          : descriptions.map((text: string, i: number) => (
+              <p key={i}>▸ {text}</p>
+            ))}
       </div>
     </div>
   );

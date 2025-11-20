@@ -128,23 +128,39 @@ export function NavLinks({ items, locale }: NavLinksProps) {
                 bgColor="bg-[#3f3f3f]"
                 image="/elektirik.png"
                 position="left"
-                list={[
-                  "OVERHEAD TRAVELING CRANES",
-                  "LIFTING GROUPS",
-                  "GANTRY CRANES",
-                  "JIB CRANES",
-                  "SPECIAL PROCESS CRANES",
-                  "CABIN CRANES",
+                listItems={[
+                  {
+                    title: "OVERHEAD TRAVELING CRANES",
+                    link: "/products/overhead-cranes",
+                    image: "/elektirik.png",
+                  },
+                  {
+                    title: "LIFTING GROUPS",
+                    link: "/products/lifting-groups",
+                    image: "/kancablokları.png",
+                  },
+                  {
+                    title: "GANTRY CRANES",
+                    link: "/products/gantry-cranes",
+                    image: "/elektirik.png",
+                  },
+                  {
+                    title: "JIB CRANES",
+                    link: "/products/jib-cranes",
+                    image: "/kancablokları.png",
+                  },
+                  {
+                    title: "SPECIAL PROCESS CRANES",
+                    link: "/products/special-cranes",
+                    image: "/elektirik.png",
+                  },
+                  {
+                    title: "CABIN CRANES",
+                    link: "/products/cabin-cranes",
+                    image: "/kancablokları.png",
+                  },
                 ]}
-                listImages={[
-                  "/elektirik.png",
-                  "/kancablokları.png",
-                  "/elektirik.png",
-                  "/kancablokları.png",
-                  "/elektirik.png",
-                  "/kancablokları.png",
-                ]}
-                description={[
+                descriptions={[
                   "Strong carrying capacity,",
                   "Horizontal and vertical maneuverability,",
                   "Electric and manual operation option,",
@@ -159,9 +175,14 @@ export function NavLinks({ items, locale }: NavLinksProps) {
                 title="Parts"
                 bgColor="bg-[#3f3f3f]"
                 image="/kancablokları.png"
-                list={["CRANE SPARE PARTS"]}
-                listImages={["/elektirik.png"]}
-                description={[
+                listItems={[
+                  {
+                    title: "CRANE SPARE PARTS",
+                    link: "/products/spare-parts",
+                    image: "/elektirik.png",
+                  },
+                ]}
+                descriptions={[
                   "Strong Durability",
                   "Adaptability in All Directions,",
                   "High Performance,",

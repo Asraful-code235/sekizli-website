@@ -61,6 +61,7 @@ export const pageDocumentType = defineType({
       description: "Add and organize sections for this page",
       of: [
         { type: "heroSection" },
+        { type: "categorySection" },
         // Add more section types here as you build them
         // { type: 'aboutSection' },
         // { type: 'servicesSection' },

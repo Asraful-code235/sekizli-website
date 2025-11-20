@@ -57,6 +57,51 @@ export const homepageQuery = `*[_type == "page" && pageKey == "homepage" && lang
           }
         }
       }
+    },
+    _type == "categorySection" => {
+      categories[]{
+        _key,
+        highlight,
+        title,
+        bgColor,
+        position,
+        image{
+          asset->{
+            _id,
+            url,
+            metadata{
+              lqip,
+              dimensions{
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          },
+          alt
+        },
+        listItems[]{
+          _key,
+          title,
+          link,
+          image{
+            asset->{
+              _id,
+              url,
+              metadata{
+                lqip,
+                dimensions{
+                  width,
+                  height,
+                  aspectRatio
+                }
+              }
+            },
+            alt
+          }
+        },
+        descriptions
+      }
     }
   },
   seoTitle,

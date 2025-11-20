@@ -34,7 +34,6 @@ export function About({
     <section className=" bg-white pb-3">
       <div className="max-w-[1600px] mx-auto ">
         <div className="bg-[#ededed] rounded-3xl py-4 px-4 lg:px-16">
-          {/* ---------- TABS ---------- */}
           <div className="px-4 sm:px-6 lg:px-8 pt-6 mb-3">
             <div className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-2">
               <Link
