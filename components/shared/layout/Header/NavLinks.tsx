@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import IntroFeatureSection from "./IntroFeatureSection";
 import { CategoryCard } from "@/features/home/components/CategoryCard";
+import { cn } from "@/lib/utils";
 
 interface NavLinksProps {
   items: NavigationItem[];
@@ -36,16 +37,18 @@ export function NavLinks({ items, locale }: NavLinksProps) {
 
   return (
     <div
-      className="hidden lg:flex items-center gap-3 lg:gap-5 relative"
+      className="hidden lg:flex items-center gap-3 xl:gap-5 relative"
       onMouseLeave={() => setOpenSheet(null)}
     >
-      <nav className="flex items-center gap-3 lg:gap-5 z-40">
+      <nav className="flex items-center gap-3 xl:gap-5 z-40">
         {items.map((item, index) => {
           const href = item.link.startsWith("/")
             ? `/${locale}${item.link}`
             : item.link;
 
-          const isActive = pathname === href;
+          const isHomePage = pathname === `/${locale}` || pathname === "/";
+          const isActive = pathname === href || (isHomePage && index === 0);
+
           const title = item.title || "";
           const isSheetTrigger =
             title.toLowerCase().includes("corporate") ||
@@ -58,9 +61,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
               onMouseEnter={
                 isSheetTrigger ? () => handleHover(title) : undefined
               }
-              className={`relative group xl:text-[13px] text-xs font-semibold border-r border-gray-500 pr-3 ${
-                isActive ? "text-brand-secondary" : "text-brand-primary"
-              }`}
+              className={`relative group xl:text-[13px] text-[9px] font-semibold border-r border-gray-500 text-brand-primary pr-1 xl:pr-3`}
             >
               {/* animated top line */}
               <span
@@ -75,18 +76,11 @@ export function NavLinks({ items, locale }: NavLinksProps) {
               "
               ></span>
               <span
-                className="
-                absolute left-0 -top-2
-                h-0.75 w-full
-                origin-left scale-x-40
-                bg-brand-secondary
-                group-hover:scale-x-0
-                opacity-0
-                group-hover:opacity-100
-                transition-all duration-500
-              "
+                className={cn(
+                  "absolute left-0 -top-2 h-0.75 w-full origin-left scale-x-40 bg-brand-secondary  group-hover:scale-x-0  opacity-0  group-hover:opacity-100  transition-all duration-500",
+                  isActive ? "opacity-100" : ""
+                )}
               ></span>
-
               {item.title}
             </Link>
           );

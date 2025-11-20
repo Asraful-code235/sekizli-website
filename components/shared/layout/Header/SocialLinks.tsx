@@ -11,14 +11,14 @@ export function SocialLinks({ links }: SocialLinksProps) {
   }
 
   return (
-    <div className="flex items-center lg:gap-3 gap-0.5">
+    <div className="flex items-center xl:gap-3 gap-0.5">
       {links.map((social, index) => (
         <a
           key={index}
           href={social.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="lg:w-9 lg:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 rounded-full bg-gray-200 hover:bg-brand-secondary transition-colors flex items-center justify-center"
+          className="xl:w-9 xl:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 rounded-full bg-gray-200 hover:bg-brand-secondary transition-colors flex items-center justify-center"
           aria-label={`Social link ${index + 1}`}
         >
           <Image
