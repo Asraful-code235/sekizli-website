@@ -1,0 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
+import { createClient } from "next-sanity";
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your-project-id",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: false,
+});
+
+export const getHeroData = async () => {
+  // Replace with actual GROQ query
+  return await client.fetch(`*[_type == "hero"][0]`);
+};
+
+export const useHeroData = () => {
+  return useQuery({
+    queryKey: ["hero"],
+    queryFn: getHeroData,
+  });
+};
