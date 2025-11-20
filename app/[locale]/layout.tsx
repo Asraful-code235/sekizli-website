@@ -26,7 +26,7 @@ export default async function LocaleLayout({
 
   const dir = getLanguageDirection(locale);
   return (
-    <div lang={locale} dir={dir}>
+    <div lang={locale} className={dir === "rtl" ? "text-direction-rtl" : ""}>
       {headerData && <Header data={headerData} locale={locale} />}
       <div>{children}</div>
       {footerData && <Footer data={footerData} />}
