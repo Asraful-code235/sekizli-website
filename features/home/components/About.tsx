@@ -31,33 +31,33 @@ export function About({
   const mainImage = image?.asset?._ref ? urlFor(image).url() : null;
 
   return (
-    <section className="pt-16 bg-white pb-3">
-      <div className="max-w-[1500px] mx-auto px-4">
-        <div className="bg-gray-100 rounded-lg py-4">
+    <section className=" bg-white pb-3">
+      <div className="max-w-[1600px] mx-auto ">
+        <div className="bg-[#ededed] rounded-3xl py-4 px-4 lg:px-16">
           {/* ---------- TABS ---------- */}
-          <div className="px-4 sm:px-6 lg:px-8 pt-6">
-            <div className="flex space-x-6 sm:space-x-10 overflow-x-auto no-scrollbar pb-2">
+          <div className="px-4 sm:px-6 lg:px-8 pt-6 mb-3">
+            <div className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-2">
               <Link
                 href="/about"
-                className="pb-3 border-b-2 border-teal-700 font-semibold text-sm whitespace-nowrap"
+                className="border-b-4 border-brand-primary font-semibold text-[10px] sm:text-base whitespace-nowrap hover:text-brand-primary transition-all"
               >
                 About Us
               </Link>
               <Link
                 href="/vision-mission"
-                className="pb-3 text-gray-600 hover:text-gray-900 hover:border-b-2 border-teal-700 transition-all text-sm whitespace-nowrap"
+                className="text-gray-600  hover:border-b-4 border-brand-primary  text-[10px] sm:text-base whitespace-nowrap  hover:text-brand-primary transition-all"
               >
                 Vision, Mission
               </Link>
               <Link
                 href="/quality-policy"
-                className="pb-3 text-gray-600 hover:text-gray-900 hover:border-b-2 border-teal-700 transition-all text-sm whitespace-nowrap"
+                className=" text-gray-600  hover:border-b-4 border-brand-primary  text-[10px] sm:text-base whitespace-nowrap  hover:text-brand-primary transition-all"
               >
                 Quality Policy & Documents
               </Link>
               <Link
                 href="/r-and-d"
-                className="pb-3 text-gray-600 hover:text-gray-900 hover:border-b-2 border-teal-700 transition-all text-sm whitespace-nowrap"
+                className=" text-gray-600  hover:border-b-4 border-brand-primary text-[10px] sm:text-base whitespace-nowrap  hover:text-brand-primary transition-all"
               >
                 R&D
               </Link>
@@ -65,7 +65,7 @@ export function About({
           </div>
 
           {/* ---------- CONTENT ---------- */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-6 sm:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-14 px-6 sm:p-8">
             {/* IMAGE COLUMN */}
             <div className="relative w-full order-2 lg:order-1">
               {mainImage ? (
@@ -95,7 +95,7 @@ export function About({
 
             {/* TEXT COLUMN */}
             <div className="flex flex-col justify-center order-1 lg:order-2">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-[35px] mb-6 max-w-[290px]">
                 {title}
               </h2>
 

@@ -34,7 +34,7 @@ function ImageSlider({
         <Image
           key={index}
           src={img}
-          alt='slide'
+          alt="slide"
           fill
           className={`object-contain transition-opacity duration-700 absolute inset-0 z-0
             ${index === currentIndex ? "opacity-100" : "opacity-0"}
@@ -43,7 +43,7 @@ function ImageSlider({
       ))}
 
       {indicator && (
-        <div className='absolute bottom-1/8 right-0 transform -translate-x-1/2 flex space-x-2 z-30'>
+        <div className="absolute bottom-1/8 right-0 transform -translate-x-1/2 flex gap-2 z-30">
           {images.map((_, index) => (
             <button
               key={index}
@@ -51,11 +51,11 @@ function ImageSlider({
                 setCurrentIndex(index);
                 onSlideChange?.(index);
               }}
-              className={`w-3 h-3 rounded-full transition-all duration-300 
+              className={` rounded-full transition-all duration-300 
                 ${
                   index === currentIndex
-                    ? "bg-brand-primary scale-110"
-                    : "bg-gray-400 hover:bg-gray-500"
+                    ? "bg-white scale-110 w-5 h-[5px]"
+                    : "bg-gray-400 hover:bg-gray-500 w-[5px] h-[5px]"
                 }
               `}
             />
