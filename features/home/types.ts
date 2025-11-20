@@ -126,6 +126,61 @@ export interface StatsSectionData {
   ctaLink?: string;
 }
 
+export interface NewsCard {
+  title: string;
+  link: string;
+  backgroundImage?: {
+    asset: SanityImageAsset;
+    alt?: string;
+  };
+  sliderItems: {
+    _key: string;
+    image: {
+      asset: SanityImageAsset;
+      alt: string;
+    };
+    title: string;
+  }[];
+}
+
+export interface SekizliCard {
+  title: string;
+  mainImage: {
+    asset: SanityImageAsset;
+    alt: string;
+  };
+  logos: {
+    _key: string;
+    asset: SanityImageAsset;
+    alt?: string;
+  }[];
+}
+
+export interface AccordionItem {
+  _key: string;
+  title: string;
+  image: {
+    asset: SanityImageAsset;
+    alt: string;
+  };
+}
+
+export interface AccordionCard {
+  backgroundImage?: {
+    asset: SanityImageAsset;
+    alt?: string;
+  };
+  items: AccordionItem[];
+}
+
+export interface NewsSectionData {
+  _type: "newsSection";
+  _key: string;
+  newsCard: NewsCard;
+  sekizliCard: SekizliCard;
+  accordionCard: AccordionCard;
+}
+
 export interface PageData {
   _id: string;
   _type: "page";
@@ -137,6 +192,7 @@ export interface PageData {
     | CategorySectionData
     | AboutSectionData
     | StatsSectionData
+    | NewsSectionData
   )[];
   seoTitle?: string;
   seoDescription?: string;

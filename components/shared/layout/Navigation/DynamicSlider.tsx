@@ -8,7 +8,7 @@ interface DynamicSliderProps {
   visibleCount?: number;
   autoPlay?: boolean;
   interval?: number;
-  image:string
+  image: string;
 }
 
 export default function DynamicSlider({
@@ -35,18 +35,20 @@ export default function DynamicSlider({
   }, [maxIndex, autoPlay, interval]);
 
   return (
-    <div className='relative w-full p-6 bg-white rounded-xl border border-gray-200'>
+    <div className="relative w-full p-6 ">
       {/* Title */}
 
-      <div className='flex items-center justify-between pb-2'>
-        {title && <h3 className='text-gray-600'>{title}</h3>}
-        <div className='flex justify-center gap-2'>
+      <div className="flex items-center justify-between pb-2">
+        {title && <h3 className="">{title}</h3>}
+        <div className="flex justify-center gap-2">
           {Array.from({ length: maxIndex + 1 }).map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === i ? "bg-brand-primary/80 scale-125" : "bg-gray-300"
+              className={`rounded-full transition-all ${
+                index === i
+                  ? "bg-brand-primary/80 scale-125 w-5 h-2"
+                  : "bg-gray-300 w-2 h-2"
               }`}
             />
           ))}
@@ -56,17 +58,17 @@ export default function DynamicSlider({
       <div>
         <Image
           src={image}
-          alt='brand logo'
+          alt="brand logo"
           width={420}
           height={420}
-          className='object-contain w-full py-5'
+          className="object-contain w-full py-5"
         />
       </div>
 
       {/* Slider View */}
-      <div className='overflow-hidden'>
+      <div className="overflow-hidden">
         <div
-          className='flex transition-transform duration-700 ease-out'
+          className="flex transition-transform duration-700 ease-out"
           style={{
             transform: `translateX(-${index * (100 / visibleCount)}%)`,
             width: `${(logos.length * 100) / visibleCount}%`,
@@ -75,12 +77,12 @@ export default function DynamicSlider({
           {logos.map((src, i) => (
             <div
               key={i}
-              className='w-1/3 flex items-center justify-center px-3'
+              className="w-1/3 flex items-center justify-center px-3"
               style={{ width: `${100 / logos.length}%` }}
             >
               <Image
                 src={src}
-                alt='brand logo'
+                alt="brand logo"
                 width={60}
                 height={60}
                 className={`object-contain transition pr-2`}

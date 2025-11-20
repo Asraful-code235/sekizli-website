@@ -11,37 +11,34 @@ import {
 import Link from "next/link";
 import ImageSlider from "@/components/shared/slider/slider";
 import { useState } from "react";
+import { NewsSectionData } from "../types";
 
-export function NewsSection() {
+export function NewsSection({ data }: { data: NewsSectionData }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const logos = [
-    "/logo.svg",
-    "/logo.svg",
-    "/logo.svg",
-    "/logo.svg",
-    "/logo.svg",
-    "/logo.svg",
-  ];
-  const accordianItems = [
-    {
-      title: "Trade Shows",
-      image: "/elektirik.png",
-    },
-    {
-      title: "Photo Gallery",
-      image: "/elektirik.png",
-    },
-    {
-      title: "Online Catalog",
-      image: "/elektirik.png",
-    },
-  ];
-  const sliderData = [
-    { image: "/logo.svg", title: "HKN Automation 2019" },
-    { image: "/elektirik.png", title: "HKN Expo 2022" },
-    { image: "/logo.svg", title: "Smart Factory Summit" },
-  ];
+  if (!data) return null;
+
+  const { newsCard, sekizliCard, accordionCard } = data;
+
+  const logos =
+    sekizliCard?.logos
+      ?.map((logo) => logo.asset.url)
+      .filter((url): url is string => !!url) || [];
+  const accordianItems =
+    accordionCard?.items
+      ?.map((item) => ({
+        title: item.title,
+        image: item.image.asset.url,
+      }))
+      .filter(
+        (item): item is { title: string; image: string } => !!item.image
+      ) || [];
+
+  const sliderImages =
+    newsCard?.sliderItems
+      ?.map((item) => item.image.asset.url)
+      .filter((url): url is string => !!url) || [];
+  const sliderTitles = newsCard?.sliderItems?.map((item) => item.title) || [];
 
   return (
     <section className="py-16 bg-white">
@@ -50,17 +47,24 @@ export function NewsSection() {
           {/* 1st card */}
           <div className="relative">
             {/* Background Layer */}
-            <div className="absolute inset-0 bg-[#f2f2f2] bg-[url('/nav-bg.png')] bg-cover bg-center opacity-40 rounded-3xl"></div>
+            <div
+              className="absolute inset-0 bg-[#f2f2f2] bg-cover bg-center opacity-40 rounded-3xl"
+              style={{
+                backgroundImage: newsCard?.backgroundImage
+                  ? `url(${newsCard.backgroundImage.asset.url})`
+                  : "url('/nav-bg.png')",
+              }}
+            ></div>
 
             {/* Content Layer */}
             <div className="relative z-10 p-6">
               <div className="rounded-lg">
                 <div className="flex items-center justify-between mb-10">
-                  <Link className="" href={"#"}>
-                    News & Announcements
+                  <Link className="" href={newsCard?.link || "#"}>
+                    {newsCard?.title || "News & Announcements"}
                   </Link>
                   <div className="flex space-x-1">
-                    <span className="w-2 h-2 bg-brand-primary rounded-full"></span>
+                    <span className="w-5 h-2 bg-brand-primary rounded-full"></span>
                     <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
                     <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
                     <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
@@ -69,8 +73,8 @@ export function NewsSection() {
 
                 <div className="overflow-hidden cursor-pointer bg-white px-4 py-10 shadow rounded-lg">
                   <ImageSlider
-                    images={sliderData.map((item) => item.image)}
-                    className="h-48"
+                    images={sliderImages}
+                    className="h-72"
                     indicator={false}
                     onSlideChange={setActiveIndex}
                   />
@@ -84,8 +88,8 @@ export function NewsSection() {
                       className="object-contain p-0.5"
                     />
 
-                    <p className="text-sm font-semibold">
-                      {sliderData[activeIndex]?.title}
+                    <p className="text-sm font-semibold text-brand-primary">
+                      {sliderTitles[activeIndex]}
                     </p>
                   </div>
                 </div>
@@ -96,9 +100,9 @@ export function NewsSection() {
           {/* 2nd card */}
           <div>
             <DynamicSlider
-              title="Those Who Prefer Sekizli"
+              title={sekizliCard?.title || "Those Who Prefer Sekizli"}
               logos={logos}
-              image="/tercih.jpg"
+              image={sekizliCard?.mainImage?.asset?.url || "/tercih.jpg"}
               visibleCount={3}
               interval={3000}
               autoPlay={true}
@@ -108,7 +112,14 @@ export function NewsSection() {
           {/* 3rd card */}
           <div className="relative">
             {/* Background Layer */}
-            <div className="absolute inset-0 bg-[#f2f2f2] bg-[url('/nav-bg.png')] bg-cover bg-center opacity-40 rounded-3xl"></div>
+            <div
+              className="absolute inset-0 bg-[#f2f2f2] bg-cover bg-center opacity-40 rounded-3xl"
+              style={{
+                backgroundImage: accordionCard?.backgroundImage
+                  ? `url(${accordionCard.backgroundImage.asset.url})`
+                  : "url('/nav-bg.png')",
+              }}
+            ></div>
 
             {/* Content Layer */}
             <div className="relative z-10 p-6">

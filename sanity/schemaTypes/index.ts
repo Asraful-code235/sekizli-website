@@ -12,6 +12,7 @@ import { heroSectionType } from "../components/sections/heroSectionType";
 import { categorySectionType } from "../components/sections/categorySectionType";
 import { aboutSectionType } from "../components/sections/aboutSectionType";
 import { statsSectionType } from "../components/sections/statsSectionType";
+import { newsSectionType } from "../components/sections/newsSectionType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -27,5 +28,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     categorySectionType,
     aboutSectionType,
     statsSectionType,
+    newsSectionType,
   ],
 };

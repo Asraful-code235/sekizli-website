@@ -182,6 +182,116 @@ export const homepageQuery = `*[_type == "page" && pageKey == "homepage" && lang
       paragraphs,
       ctaText,
       ctaLink
+    },
+    _type == "newsSection" => {
+      newsCard {
+        title,
+        link,
+        backgroundImage {
+          asset->{
+            _id,
+            url,
+            metadata{
+              lqip,
+              dimensions{
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          },
+          alt
+        },
+        sliderItems[] {
+          _key,
+          image {
+            asset->{
+              _id,
+              url,
+              metadata{
+                lqip,
+                dimensions{
+                  width,
+                  height,
+                  aspectRatio
+                }
+              }
+            },
+            alt
+          },
+          title
+        }
+      },
+      sekizliCard {
+        title,
+        mainImage {
+          asset->{
+            _id,
+            url,
+            metadata{
+              lqip,
+              dimensions{
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          },
+          alt
+        },
+        logos[] {
+          _key,
+          asset->{
+            _id,
+            url,
+            metadata{
+              lqip,
+              dimensions{
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          },
+          alt
+        }
+      },
+      accordionCard {
+        backgroundImage {
+          asset->{
+            _id,
+            url,
+            metadata{
+              lqip,
+              dimensions{
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          },
+          alt
+        },
+        items[] {
+          _key,
+          title,
+          image {
+            asset->{
+              _id,
+              url,
+              metadata{
+                lqip,
+                dimensions{
+                  width,
+                  height,
+                  aspectRatio
+                }
+              }
+            },
+            alt
+          }
+        }
+      }
     }
   },
   seoTitle,
