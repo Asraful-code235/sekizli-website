@@ -72,7 +72,10 @@ function Menubar({ logo, locale }: LogoProps) {
           </Button>
         </SheetTrigger>
 
-        <SheetContent side='top' className='overflow-y-auto max-h-full'>
+        <SheetContent
+          side='top'
+          className='overflow-y-auto max-h-full bg-[linear-gradient(256deg,#00524d_23%,#05413e_75%)]'
+        >
           <div className='container mx-auto text-white px-3'>
             <SheetHeader className='px-0'>
               <SheetTitle></SheetTitle>

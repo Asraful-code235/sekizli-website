@@ -113,17 +113,15 @@ export function CategoryCard({
 
           {/* MAIN IMAGE */}
           <div
-            className={`
-              relative w-full flex 
-              ${isLeft ? "justify-start" : "justify-end"}
-            `}
+            className={`relative w-full ${
+              isLeft ? "justify-start" : "justify-end"
+            } aspect-4/3 overflow-hidden`}
           >
             <Image
               src={displayImage}
               alt={title}
-              width={400}
-              height={300}
-              className='max-w-full h-auto opacity-95 aspect-auto'
+              fill
+              className='object-contain opacity-95'
             />
           </div>
 
