@@ -36,11 +36,11 @@ export function CategoryCard({
       className={`
         ${
           isLeft
-            ? "rounded-r-xl sm:rounded-r-2xl md:rounded-r-3xl pl-4 sm:pl-10 md:pl-24 lg:pl-24 xl:pl-54"
-            : "rounded-l-xl sm:rounded-l-2xl md:rounded-l-3xl pr-4 sm:pr-10 md:pr-24 lg:pr-24 xl:pr-54"
+            ? "rounded-r-xl sm:rounded-r-2xl md:rounded-r-3xl max-sm:mr-4"
+            : "rounded-l-xl sm:rounded-l-2xl md:rounded-l-3xl max-sm:ml-4"
         }
 
-        p-10 text-white relative overflow-hidden
+        p-4 md:p-10 text-white relative overflow-hidden
         hover:shadow-2xl transition-shadow 
         ${bgColor} bg-[url('/rightBg.png')] bg-cover bg-center
       `}
@@ -48,13 +48,13 @@ export function CategoryCard({
       <div
         className={`
           flex items-start gap-10 relative z-10
-          ${isLeft ? "flex-row" : "flex-row-reverse"}
+          ${isLeft ? "flex-row ml-auto max-w-[650px] w-full" : "flex-row-reverse max-w-[650px] mr-auto w-full"}
         `}
       >
         {/* LEFT HALF — Content + List */}
-        <div className="w-1/2">
+        <div className="w-1/3">
           <h2
-            className={`lg:text-2xl md:text-xl xl:text-3xl font-bold mb-2 ${isLeft ? "text-left" : "text-right"}`}
+            className={`text-[13px] xl:text-[17px] font-bold mb-2 ${isLeft ? "text-left" : "text-right xl:mr-10"}`}
           >
             <span className="text-brand-secondary">{highlight}</span>
             <br />
@@ -63,7 +63,7 @@ export function CategoryCard({
 
           <div
             className={`w-16 h-[2px] bg-brand-secondary/90 mb-8 ${
-              isLeft ? "" : "ml-auto"
+              isLeft ? "" : "ml-auto xl:mr-10 "
             }`}
           />
 
@@ -88,6 +88,17 @@ export function CategoryCard({
               ))}
             </ul>
           )}
+
+          <div
+            className={`
+               text-xs text-gray-100 max-sm:hidden 
+              ${isLeft ? "text-right hidden" : "text-right"}
+            `}
+          >
+            {isLeft
+              ? description.map((text, i) => <p key={i}>▸ {text}</p>)
+              : description.map((text, i) => <p key={i}>▸ {text}</p>)}
+          </div>
         </div>
 
         {/* RIGHT HALF — Image + Background Icon + Description */}
@@ -97,7 +108,7 @@ export function CategoryCard({
           {/* BACKGROUND ICON */}
           <div
             className={`
-              absolute top-10 opacity-30 group-hover:opacity-50 transition-opacity
+              absolute w-full h-full top-10 opacity-30 group-hover:opacity-50 transition-opacity
               ${isLeft ? "left-0" : "right-0"}
             `}
           >
@@ -128,8 +139,8 @@ export function CategoryCard({
           {/* DESCRIPTION */}
           <div
             className={`
-              mt-12 text-xs space-y-2 text-gray-100 
-              ${isLeft ? "text-left" : "text-right"}
+              mt-12 text-xs text-gray-100 max-sm:hidden
+              ${isLeft ? "text-right" : "hidden"}
             `}
           >
             {isLeft
@@ -137,6 +148,16 @@ export function CategoryCard({
               : description.map((text, i) => <p key={i}>{text}◂</p>)}
           </div>
         </div>
+      </div>
+      <div
+        className={`
+               text-xs text-gray-100 mt-6 sm:hidden
+              ${isLeft ? "text-right " : "text-right"}
+            `}
+      >
+        {isLeft
+          ? description.map((text, i) => <p key={i}>▸ {text}</p>)
+          : description.map((text, i) => <p key={i}>▸ {text}</p>)}
       </div>
     </div>
   );

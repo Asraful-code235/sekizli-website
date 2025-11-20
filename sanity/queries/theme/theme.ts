@@ -1,12 +1,17 @@
-import { SanityAPI } from '@/lib/api'
+import { SanityAPI } from "@/lib/api";
 
 export interface ThemeColors {
   primaryColor?: {
-    hex: string
-  }
+    hex: string;
+  };
   secondaryColor?: {
-    hex: string
-  }
+    hex: string;
+  };
+  favicon?: {
+    asset: {
+      url: string;
+    };
+  };
 }
 
 export const themeQuery = `
@@ -16,15 +21,23 @@ export const themeQuery = `
   },
   secondaryColor{
     hex
+  },
+  favicon{
+    asset->{
+      url
+    }
   }
 }
-`
+`;
 
 export async function getThemeData() {
-  return SanityAPI.fetch(themeQuery, {}, {
-    useCdn: true,
-    revalidate: 3600, // 1 hour
-    tags: ['theme']
-  })
+  return SanityAPI.fetch(
+    themeQuery,
+    {},
+    {
+      useCdn: true,
+      revalidate: 3600, // 1 hour
+      tags: ["theme"],
+    }
+  );
 }
-

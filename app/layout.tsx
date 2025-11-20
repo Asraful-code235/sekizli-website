@@ -16,11 +16,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = generatePageMetadata({
-  title: 'Sekizli',
-  description: 'High-performance web application built with Next.js and Sanity',
-  path: '/',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const themeData = (await getThemeData()) as ThemeColors | null;
+
+  return generatePageMetadata({
+    title: "Sekizli",
+    description:
+      "High-performance web application built with Next.js and Sanity",
+    path: "/",
+    favicon: themeData?.favicon?.asset?.url,
+  });
+}
 
 export const viewport: Viewport = baseViewport;
 
@@ -33,8 +39,12 @@ export default async function RootLayout({
 
   // Generate CSS variables for server-side injection
   const cssVariables = {
-    ...(themeData?.primaryColor?.hex && { '--primary-brand': themeData.primaryColor.hex }),
-    ...(themeData?.secondaryColor?.hex && { '--secondary-brand': themeData.secondaryColor.hex }),
+    ...(themeData?.primaryColor?.hex && {
+      "--primary-brand": themeData.primaryColor.hex,
+    }),
+    ...(themeData?.secondaryColor?.hex && {
+      "--secondary-brand": themeData.secondaryColor.hex,
+    }),
   } as React.CSSProperties;
 
   return (

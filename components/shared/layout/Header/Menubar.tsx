@@ -69,7 +69,7 @@ function Menubar({ data }: MenubarProps) {
           side="top"
           className="overflow-y-auto max-h-full bg-[linear-gradient(256deg,#00524d_23%,#05413e_75%)] z-60"
         >
-          <div className="container mx-auto text-white px-3">
+          <div className="max-w-[1500px] mx-auto text-white px-3">
             <SheetHeader className="px-0">
               <SheetTitle></SheetTitle>
               <div className="flex justify-between items-center border-b border-gray-500 pb-4">

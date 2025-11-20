@@ -17,7 +17,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
   return (
     <section
-      className="relative lg:h-[85vh] md:h-[60vh] h-[50vh] flex flex-col justify-end bg-black"
+      className="relative lg:h-[80vh] md:h-[60vh] h-[50vh] flex flex-col justify-end bg-black"
       onMouseEnter={() => setCurrent((prev) => (prev + 1) % data.slides.length)}
     >
       <div className="absolute inset-0 z-0">
@@ -56,7 +56,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
       </div>
 
       <div className="relative z-10 w-full">
-        <div className="container mx-auto px-4 md:px-12">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-12">
           <div className="max-w-[130px] md:max-w-[210px]">
             <h1 className="text-xs md:text-[2em] font-bold text-white drop-shadow-lg whitespace-pre-line leading-none">
               {data.title}

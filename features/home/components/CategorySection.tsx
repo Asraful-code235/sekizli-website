@@ -1,20 +1,19 @@
-'use client';
+"use client";
 
 import { CategoryCard } from "@/features/home/components/CategoryCard";
 
-
 export function CategorySection() {
   return (
-    <section className='py-16'>
-      <div className=''>
-        <div className='grid md:grid-cols-2 gap-8'>
+    <section className="py-12">
+      <div className="w-full">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 w-full">
           {/* Section 1 */}
           <CategoryCard
-            highlight='Electric'
-            title='Crane Systems'
-            bgColor='bg-[#0f766e]'
-            image='/elektirik.png'
-            position='left'
+            highlight="Electric"
+            title="Crane Systems"
+            bgColor="bg-brand-primary"
+            image="/elektirik.png"
+            position="left"
             list={[
               "OVERHEAD TRAVELING CRANES",
               "LIFTING GROUPS",
@@ -42,14 +41,12 @@ export function CategorySection() {
 
           {/* Section 2 */}
           <CategoryCard
-            highlight='Spare'
-            title='Parts'
-            bgColor='bg-[#3f3f3f]'
-            image='/kancablokları.png'
+            highlight="Spare"
+            title="Parts"
+            bgColor="bg-[#3f3f3f]"
+            image="/kancablokları.png"
             list={["CRANE SPARE PARTS"]}
-            listImages={[
-              "/elektirik.png",
-            ]}
+            listImages={["/elektirik.png"]}
             description={[
               "Strong Durability",
               "Adaptability in All Directions,",

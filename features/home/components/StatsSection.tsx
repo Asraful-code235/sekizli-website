@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -30,24 +30,24 @@ const statsData = {
 
 export function StatsSection() {
   return (
-    <section className='py-0 md:py-10 sm:py-0 lg:py-0'>
-      <div className='container mx-auto px-4'>
+    <section className="py-0 md:py-10 sm:py-0 lg:py-0">
+      <div className="max-w-[1500px] mx-auto px-4">
         <div
-          className='rounded-3xl p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-brand-primary/80'
+          className="rounded-3xl p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-brand-primary/80"
           style={{
             backgroundImage: `url('${statsData.bgImage}')`,
           }}
         >
-          <div className='grid lg:grid-cols-2 grid-cols-1 gap-12 items-start'>
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 items-start">
             {/* LEFT IMAGE */}
-            <div className='relative'>
-              <div className='relative z-10 pt-12'>
+            <div className="relative">
+              <div className="relative z-10 pt-12">
                 <Image
                   src={statsData.image}
-                  alt='stats image'
+                  alt="stats image"
                   width={400}
                   height={400}
-                  className='w-full'
+                  className="w-full"
                 />
               </div>
             </div>
@@ -55,7 +55,7 @@ export function StatsSection() {
             {/* RIGHT CONTENT */}
             <div>
               {/* Dynamic Title */}
-              <h2 className='text-3xl lg:text-4xl font-bold mb-8 leading-tight'>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-8 leading-tight">
                 {statsData.title.map((line, i) => (
                   <span key={i}>
                     {line}
@@ -68,7 +68,7 @@ export function StatsSection() {
               {statsData.paragraphs.map((text, i) => (
                 <p
                   key={i}
-                  className='text-sm text-gray-300 mb-4 leading-relaxed'
+                  className="text-sm text-gray-300 mb-4 leading-relaxed"
                 >
                   {text}
                 </p>
@@ -77,13 +77,13 @@ export function StatsSection() {
               {/* Dynamic Button */}
               <a
                 href={statsData.button.href}
-                className='inline-flex items-center space-x-3 text-sm text-gray-300 hover:text-white transition-colors group mt-4'
+                className="inline-flex items-center space-x-3 text-sm text-gray-300 hover:text-white transition-colors group mt-4"
               >
-                <span className='w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-brand-primary/80 transition-colors'>
+                <span className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-brand-primary/80 transition-colors">
                   <ArrowRight size={18} />
                 </span>
 
-                <span className='font-semibold'>
+                <span className="font-semibold">
                   {statsData.button.labelLine1}
                   <br />
                   {statsData.button.labelLine2}
@@ -96,4 +96,3 @@ export function StatsSection() {
     </section>
   );
 }
-

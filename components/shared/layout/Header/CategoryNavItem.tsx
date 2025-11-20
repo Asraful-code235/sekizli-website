@@ -17,8 +17,8 @@ export default function CategoryNavItem({
     <Link
       href={href}
       className={`
-        block relative text-xs tracking-wider font-medium group max-w-[164px]
-        text-gray-300 hover:text-white transition-colors pb-2 opacity-70 hover:opacity-100 border-b-2 border-dashed border-gray-500
+        block relative text-[10px] md:text-[13px] tracking-wider font-semibold group max-w-[164px] leading-4
+        text-gray-300 hover:text-white transition-colors pb-2 opacity-80 hover:opacity-100 border-b-2 border-dashed border-gray-500
         ${isLeft ? "text-left" : "text-right"}
       `}
     >

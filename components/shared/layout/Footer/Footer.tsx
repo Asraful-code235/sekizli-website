@@ -29,17 +29,18 @@ function Footer({ data }: FooterProps) {
     data.sections?.filter((s) => !s.links?.length) || [];
 
   return (
-    <footer className='bg-white border-t border-gray-300 pb-12'>
-      <div className='container mx-auto px-4'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[300px_1fr] gap-16 md:gap-12 lg:gap-28'>
+    <footer className="bg-white border-t border-gray-300 pb-12 z-10">
+      <div className="max-w-[1500px] mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[300px_1fr] gap-16 md:gap-12 lg:gap-28">
           {/* LEFT COLUMN */}
-          <div className='flex flex-col items-start relative'>
+          <div className="flex flex-col items-start relative">
             {data.logo?.asset?.url && (
               <Image
                 src={data.logo.asset.url}
                 width={240}
                 height={70}
-                alt='Logo'
+                alt="Logo"
+                className="-mt-6 md:-mt-8 max-md:w-[118px] h-auto z-20! bg-white"
               />
             )}
 
@@ -48,23 +49,23 @@ function Footer({ data }: FooterProps) {
                 src={data.craneImage.asset.url}
                 width={120}
                 height={120}
-                alt='Crane'
-                className='absolute top-0 lg:-right-25 right-0'
+                alt="Crane"
+                className="absolute max-md:w-[49px] h-auto top-0 lg:-right-25 right-0"
               />
             )}
 
             {data.copyrightText && (
-              <p className='text-xs text-gray-600 leading-relaxed max-w-[240px] mt-4'>
+              <p className="text-[9px] md:text-xs text-gray-600 leading-none max-w-[180px] md:max-w-[240px] mt-4">
                 {data.copyrightText}
               </p>
             )}
           </div>
 
           {/* RIGHT SIDE */}
-          <div className='flex flex-col'>
+          <div className="flex flex-col">
             {/* TOP SOCIAL + SUPPORT */}
-            <div className='border-y md:border-y-0 md:border-b border-gray-300 relative py-4 mb-10'>
-              <div className='flex items-center justify-between'>
+            <div className="border-y md:border-y-0 md:border-b border-gray-300 relative py-4 mb-10">
+              <div className="flex items-center justify-between">
                 {/* SOCIALS */}
 
                 <div
@@ -76,11 +77,11 @@ function Footer({ data }: FooterProps) {
   after:h-[4px] 
   after:bg-[#00524d]"
                 >
-                  <h4 className='text-xs font-bold text-teal-900'>
+                  <h4 className="text-[10px] md:text-xs font-bold text-teal-900">
                     Sekizli Social Media Accounts
                   </h4>
 
-                  <div className='flex items-center gap-2 md:gap-3'>
+                  <div className="flex items-center gap-2 md:gap-3">
                     {data.socialLinks?.map((item, i) => {
                       const Icon = item.icon
                         ? iconMap[item.icon.toLowerCase()]
@@ -90,9 +91,9 @@ function Footer({ data }: FooterProps) {
                         <Link
                           key={i}
                           href={item.url}
-                          className='w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center hover:bg-brand-primary/70'
+                          className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-brand-primary text-white flex items-center justify-center hover:bg-brand-primary/70"
                         >
-                          <Icon size={16} />
+                          <Icon size={16} className="md:w-5 md:h-5 w-3 h-3" />
                         </Link>
                       );
                     })}
@@ -109,16 +110,16 @@ function Footer({ data }: FooterProps) {
   after:h-[4px] 
   after:bg-[#00524d]"
                   >
-                    <h4 className='text-xs font-bold text-teal-900'>
+                    <h4 className="text-[10px] md:text-xs font-bold text-teal-900">
                       Sekizli Support Line
                     </h4>
 
                     <Link
                       href={`tel:${data.supportPhone}`}
-                      className='flex items-center justify-end gap-2'
+                      className="flex items-center justify-end gap-2"
                     >
-                      <Phone className='text-teal-700' size={20} />
-                      <span className='lg:text-lg font-bold text-teal-900'>
+                      <Phone className="text-teal-700" size={20} />
+                      <span className="text-[10px] lg:text-lg font-bold text-teal-900">
                         {data.supportPhone}
                       </span>
                     </Link>
@@ -128,29 +129,29 @@ function Footer({ data }: FooterProps) {
             </div>
 
             {/* LOWER MENU SECTIONS */}
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10'>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
               {/* SECTIONS WITH LINKS */}
               {sectionsWithLinks.map((section, i) => (
                 <div key={i}>
                   {i === 3 && sectionsWithoutLinks.length > 0 && (
-                    <div className=''>
-                      <ul className='space-y-1 text-xs text-gray-700'>
+                    <div className="">
+                      <ul className="space-y-1 text-[11px] sm:text-xs text-gray-700">
                         {sectionsWithoutLinks.map((s, index) => (
                           <li key={index}>{s.title}</li>
                         ))}
                       </ul>
                     </div>
                   )}
-                  <span className='text-xs text-gray-700 font-bold'>
+                  <span className="text-[11px] sm:text-xs text-gray-700 font-bold">
                     {section.title}
                   </span>
 
-                  <ul className='space-y-1 text-xs text-gray-700 mt-1'>
+                  <ul className="space-y-1 text-[11px] sm:text-xs text-gray-700 mt-1">
                     {section.links?.map((link, j) => (
                       <li key={j}>
                         <Link
                           href={link.url || "#"}
-                          className='hover:text-teal-700'
+                          className="hover:text-teal-700 text-[11px] sm:text-xs"
                         >
                           › {link.label}
                         </Link>
@@ -162,18 +163,20 @@ function Footer({ data }: FooterProps) {
 
               {/* CONTACT COLUMN */}
               <div>
-                <h4 className='font-bold text-sm mb-3'>Contact</h4>
+                <h4 className="font-bold mb-3 text-[11px] sm:text-xs">
+                  Contact
+                </h4>
 
-                <div className='text-xs text-gray-700 leading-relaxed mb-4'>
-                  <p className='whitespace-pre-line'>{data.contact?.address}</p>
+                <div className="text-[11px] sm:text-xs text-gray-700 leading-relaxed mb-4">
+                  <p className="whitespace-pre-line">{data.contact?.address}</p>
                 </div>
 
-                <div className='text-xs'>
+                <div className="text-[11px] sm:text-xs">
                   {data.contact?.phones?.map((phone, i) => (
                     <div key={i}>
                       <Link
                         href={`tel:${phone}`}
-                        className='text-teal-900 font-bold'
+                        className="text-teal-900 font-bold"
                       >
                         {phone}
                       </Link>
@@ -183,10 +186,6 @@ function Footer({ data }: FooterProps) {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className='mt-12 pt-8 border-t border-gray-300 text-center text-xs text-gray-500'>
-          Web Design & Software | INVIVA
         </div>
       </div>
     </footer>
