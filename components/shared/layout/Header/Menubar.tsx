@@ -74,7 +74,7 @@ function Menubar({ logo, locale }: LogoProps) {
 
         <SheetContent
           side='top'
-          className='overflow-y-auto max-h-full bg-[linear-gradient(256deg,#00524d_23%,#05413e_75%)]'
+          className='overflow-y-auto max-h-full bg-[linear-gradient(256deg,#00524d_23%,#05413e_75%)] z-60'
         >
           <div className='container mx-auto text-white px-3'>
             <SheetHeader className='px-0'>
