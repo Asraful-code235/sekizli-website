@@ -37,10 +37,16 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  
+
   /* Custom Brand Colors */
-  --color-brand-primary: var(--primary-brand, #0f766e); /* fallback to teal-700 */
-  --color-brand-secondary: var(--secondary-brand, #facc15); /* fallback to yellow-400 */
+  --color-brand-primary: var(
+    --primary-brand,
+    #0f766e
+  ); /* fallback to teal-700 */
+  --color-brand-secondary: var(
+    --secondary-brand,
+    #facc15
+  ); /* fallback to yellow-400 */
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -123,5 +129,70 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.text-direction-rtl {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  a,
+  li,
+  td,
+  th,
+  label,
+  button,
+  input,
+  textarea {
+    direction: rtl;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    direction: rtl;
+  }
+
+  /* Preserve specific UI elements in LTR */
+  img,
+  svg,
+  video {
+    direction: ltr;
+  }
+
+  /* Keep flexbox and grid in their original direction */
+  .grid,
+  .flex,
+  [class*="flex"],
+  [class*="grid"] {
+    direction: ltr;
+  }
+
+  /* But allow text within flex/grid to be RTL */
+  .grid > *,
+  .flex > *,
+  [class*="flex"] > *,
+  [class*="grid"] > * {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    a,
+    li,
+    td,
+    th,
+    label,
+    button {
+      direction: rtl;
+    }
   }
 }
