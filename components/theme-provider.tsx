@@ -1,59 +1,59 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { type ThemeProviderProps } from 'next-themes'
-import { ThemeColors, themeQuery } from '@/sanity/queries/theme/theme'
-import { useQuery } from '@tanstack/react-query'
-import { client } from '@/sanity/lib/client'
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes";
+import { ThemeColors, themeQuery } from "@/sanity/queries/theme/theme";
+import { useQuery } from "@tanstack/react-query";
+import { client } from "@/sanity/lib/client";
+import { useEffect } from "react";
 
 interface ProviderProps extends ThemeProviderProps {
-  themeData?: ThemeColors | null
+  themeData?: ThemeColors | null;
 }
 
-export function ThemeProvider({ children, themeData: initialThemeData, ...props }: ProviderProps) {
-  // Use Tanstack Query to fetch latest theme data on client
+export function ThemeProvider({
+  children,
+  themeData: initialThemeData,
+  ...props
+}: ProviderProps) {
   const { data: themeData } = useQuery({
-    queryKey: ['theme'],
+    queryKey: ["theme"],
     queryFn: async () => {
-      // Fetch directly from Sanity client on frontend
-      // Use CDN but with low caching time or perspective 'published'
-      return await client.fetch<ThemeColors>(themeQuery, {}, {
-        filterResponse: false,
-        useCdn: true // or false if you want absolute freshness
-      })
+      return (await client.fetch(
+        themeQuery,
+        {},
+        {
+          filterResponse: false,
+          useCdn: true,
+        }
+      )) as ThemeColors;
     },
-    initialData: initialThemeData || undefined,
-    staleTime: 1000 * 60 * 5, // Consider stale after 5 minutes
-    refetchOnWindowFocus: true, // Refetch when user comes back to tab
-  })
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: true,
+    placeholderData: initialThemeData || undefined,
+  });
 
-  // Effect to apply dynamic colors and store in localStorage
-  React.useEffect(() => {
+  useEffect(() => {
     if (themeData?.primaryColor?.hex) {
-      const primary = themeData.primaryColor.hex
-      
-      // Set CSS variable
-      document.documentElement.style.setProperty('--primary-brand', primary)
-      
-      // Store in localStorage as requested
+      const primary = themeData.primaryColor.hex;
+
+      document.documentElement.style.setProperty("--primary-brand", primary);
       try {
-        localStorage.setItem('site-theme-primary', primary)
-      } catch (e) {
-        // ignore storage errors
-      }
+        localStorage.setItem("site-theme-primary", primary);
+      } catch (e) {}
     }
 
     if (themeData?.secondaryColor?.hex) {
-      const secondary = themeData.secondaryColor.hex
-      document.documentElement.style.setProperty('--secondary-brand', secondary)
-       try {
-        localStorage.setItem('site-theme-secondary', secondary)
-      } catch (e) {
-        // ignore
-      }
+      const secondary = themeData.secondaryColor.hex;
+      document.documentElement.style.setProperty(
+        "--secondary-brand",
+        secondary
+      );
+      try {
+        localStorage.setItem("site-theme-secondary", secondary);
+      } catch (e) {}
     }
-  }, [themeData])
+  }, [themeData]);
 
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
