@@ -50,7 +50,7 @@ export default function HeaderCategoryCard({
           </h2>
 
           <div
-            className={`w-16 h-[2px] bg-yellow-300 mb-8 ${
+            className={`w-16 h-[2px] bg-brand-secondary mb-8 ${
               isLeft ? "" : "ml-auto"
             }`}
           />

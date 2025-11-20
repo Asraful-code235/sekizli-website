@@ -13,7 +13,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
   const pathname = usePathname()
 
   return (
-    <nav className="hidden md:flex items-center gap-6">
+    <nav className="hidden lg:flex items-center gap-3 lg:gap-5">
       {items.map((item, index) => {
         const href = item.link.startsWith('/') 
           ? `/${locale}${item.link}` 
@@ -25,7 +25,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
           <Link
             key={index}
             href={href}
-            className={`text-sm font-medium transition-colors hover:text-brand-secondary border-r border-gray-500 pr-2 ${
+            className={`xl:text-sm text-xs font-medium transition-colors hover:text-brand-secondary border-r border-gray-500 pr-3 ${
               isActive ? 'text-brand-secondary' : 'text-gray-700'
             }`}
           >

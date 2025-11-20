@@ -30,7 +30,7 @@ export default function CategoryNavItem({
       {/* Underline */}
       <span
         className='
-          block h-0.5 bg-yellow-300 
+          block h-0.5 bg-brand-secondary 
           absolute -bottom-1 
           w-0 group-hover:w-full
           transition-all duration-300

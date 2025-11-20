@@ -46,7 +46,7 @@ export function NewsSection() {
   return (
     <section className='py-16 bg-white'>
       <div className='container mx-auto px-4'>
-        <div className='grid md:grid-cols-3 gap-8'>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8'>
           {/* 1st card */}
           <div className='relative'>
             {/* Background Layer */}
@@ -60,7 +60,7 @@ export function NewsSection() {
                     News & Announcements
                   </Link>
                   <div className='flex space-x-1'>
-                    <span className='w-2 h-2 bg-teal-700 rounded-full'></span>
+                    <span className='w-2 h-2 bg-brand-primary rounded-full'></span>
                     <span className='w-2 h-2 bg-gray-300 rounded-full'></span>
                     <span className='w-2 h-2 bg-gray-300 rounded-full'></span>
                     <span className='w-2 h-2 bg-gray-300 rounded-full'></span>

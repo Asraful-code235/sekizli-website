@@ -14,16 +14,18 @@ interface HeaderProps {
 export function Header({ data, locale }: HeaderProps) {
   return (
     <header className='sticky top-0 z-50 bg-white border-b border-gray-200'>
-      <div className='container mx-auto px-4'>
+      <div className='container mx-auto px-1'>
         <div className='flex items-center justify-between h-20'>
           <Logo logo={data.logo} locale={locale} />
-          <div className='h-full'>
-            <Menubar logo={data.logo} locale={locale} />
-            <LanguageDropdown availableLanguages={data.languages} />
+          <div className='flex items-center flex-row-reverse md:flex-row h-full lg:gap-5'>
+            <div className='h-full'>
+              <Menubar logo={data.logo} locale={locale} />
+              <LanguageDropdown availableLanguages={data.languages} />
+            </div>
+            <NavLinks items={data.navigationItems} locale={locale} />
+            <PhoneButton callCta={data.callCta} />
+            <SocialLinks links={data.socialLinks} />
           </div>
-          <NavLinks items={data.navigationItems} locale={locale} />
-          <PhoneButton callCta={data.callCta} />
-          <SocialLinks links={data.socialLinks} />
         </div>
       </div>
     </header>

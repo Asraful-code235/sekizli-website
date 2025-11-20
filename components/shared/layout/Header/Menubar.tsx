@@ -42,13 +42,36 @@ interface LogoProps {
 }
 function Menubar({ logo, locale }: LogoProps) {
   return (
-    <div className="">
+    <div className='w-auto'>
       <Sheet>
-        <SheetTrigger asChild className="bg-brand-primary h-20 border-b-3 border-b-brand-secondary w-full">
-          <Button variant='outline' className="hover:bg-brand-primary/90 cursor-pointer rounded-none" >
-            <Menu color="white"/>
+        <SheetTrigger asChild>
+          <Button
+            variant='outline'
+            className='
+            bg-brand-primary 
+            border-b-4 border-b-brand-secondary
+            rounded-none 
+            w-full
+            h-14
+            sm:h-16
+            md:h-20
+            lg:h-24
+            flex items-center justify-center
+            hover:bg-brand-primary/90
+            '
+          >
+            <Menu
+              color='white'
+              className='
+              w-5 h-5
+              sm:w-6 sm:h-6
+              md:w-7 md:h-7
+              lg:w-8 lg:h-8
+            '
+            />
           </Button>
         </SheetTrigger>
+
         <SheetContent side='top' className='overflow-y-auto max-h-full'>
           <div className='container mx-auto text-white px-3'>
             <SheetHeader className='px-0'>

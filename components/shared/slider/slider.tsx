@@ -43,7 +43,7 @@ function ImageSlider({
       ))}
 
       {indicator && (
-        <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30'>
+        <div className='absolute bottom-1/8 right-0 transform -translate-x-1/2 flex space-x-2 z-30'>
           {images.map((_, index) => (
             <button
               key={index}
@@ -52,9 +52,10 @@ function ImageSlider({
                 onSlideChange?.(index);
               }}
               className={`w-3 h-3 rounded-full transition-all duration-300 
-                ${index === currentIndex
-                  ? "bg-teal-600 scale-110"
-                  : "bg-black/50 hover:bg-black/70"
+                ${
+                  index === currentIndex
+                    ? "bg-brand-primary scale-110"
+                    : "bg-gray-400 hover:bg-gray-500"
                 }
               `}
             />

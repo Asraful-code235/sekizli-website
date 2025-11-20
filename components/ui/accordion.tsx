@@ -41,7 +41,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <div className='group flex items-center rounded-full border hover:bg-teal-700 p-2'>
+        <div className='group flex items-center rounded-full border hover:bg-brand-primary/80 p-2'>
           <ChevronDownIcon
             className='
             text-muted-foreground

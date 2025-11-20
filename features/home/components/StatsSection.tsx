@@ -30,15 +30,15 @@ const statsData = {
 
 export function StatsSection() {
   return (
-    <section className='py-16'>
+    <section className='py-0 md:py-10 sm:py-0 lg:py-0'>
       <div className='container mx-auto px-4'>
         <div
-          className='rounded-3xl p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-teal-700'
+          className='rounded-3xl p-12 text-white relative overflow-hidden bg-[#393939] bg-cover bg-center transition-all duration-400 ease-in hover:bg-brand-primary/80'
           style={{
             backgroundImage: `url('${statsData.bgImage}')`,
           }}
         >
-          <div className='grid md:grid-cols-2 gap-12 items-start'>
+          <div className='grid lg:grid-cols-2 grid-cols-1 gap-12 items-start'>
             {/* LEFT IMAGE */}
             <div className='relative'>
               <div className='relative z-10 pt-12'>
@@ -79,7 +79,7 @@ export function StatsSection() {
                 href={statsData.button.href}
                 className='inline-flex items-center space-x-3 text-sm text-gray-300 hover:text-white transition-colors group mt-4'
               >
-                <span className='w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-teal-700 transition-colors'>
+                <span className='w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center group-hover:bg-brand-primary/80 transition-colors'>
                   <ArrowRight size={18} />
                 </span>
 

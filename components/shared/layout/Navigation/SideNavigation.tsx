@@ -70,8 +70,8 @@ export default function SideNavigation({ items }: SideNavProps) {
                 transition-all border-b border-gray-200
                 ${
                   isActive
-                    ? "bg-teal-800 text-white"
-                    : "text-gray-800 hover:bg-yellow-300 hover:text-black"
+                    ? "bg-brand-primary/80 text-white"
+                    : "text-gray-800 hover:bg-brand-secondary/80 hover:text-black"
                 }
               `}
                   >
@@ -96,7 +96,7 @@ export default function SideNavigation({ items }: SideNavProps) {
 
         {/* 2nd section */}
         <div className='bg-gray-100 rounded-xl p-5 relative'>
-          <div className='absolute bottom-0 left-0 w-full h-1 bg-yellow-300 rounded-b-xl'></div>
+          <div className='absolute bottom-0 left-0 w-full h-1 bg-brand-secondary/90 rounded-b-xl'></div>
 
           <div className='flex gap-4'>
             {/* Left Big S Icon */}

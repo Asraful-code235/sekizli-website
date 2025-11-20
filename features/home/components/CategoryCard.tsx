@@ -36,8 +36,8 @@ export function CategoryCard({
       className={`
         ${
           isLeft
-            ? "rounded-r-xl sm:rounded-r-2xl md:rounded-r-3xl pl-4 sm:pl-10 md:pl-54"
-            : "rounded-l-xl sm:rounded-l-2xl md:rounded-l-3xl pr-4 sm:pr-10 md:pr-54"
+            ? "rounded-r-xl sm:rounded-r-2xl md:rounded-r-3xl pl-4 sm:pl-10 md:pl-24 lg:pl-24 xl:pl-54"
+            : "rounded-l-xl sm:rounded-l-2xl md:rounded-l-3xl pr-4 sm:pr-10 md:pr-24 lg:pr-24 xl:pr-54"
         }
 
         p-10 text-white relative overflow-hidden
@@ -54,7 +54,7 @@ export function CategoryCard({
         {/* LEFT HALF — Content + List */}
         <div className='w-1/2'>
           <h2
-            className={`text-3xl font-bold mb-2 ${isLeft ? "text-left" : "text-right"}`}
+            className={`lg:text-2xl md:text-xl xl:text-3xl font-bold mb-2 ${isLeft ? "text-left" : "text-right"}`}
           >
             <span className='text-yellow-400'>{highlight}</span>
             <br />
@@ -62,7 +62,7 @@ export function CategoryCard({
           </h2>
 
           <div
-            className={`w-16 h-[2px] bg-yellow-300 mb-8 ${
+            className={`w-16 h-[2px] bg-brand-secondary/90 mb-8 ${
               isLeft ? "" : "ml-auto"
             }`}
           />
@@ -92,7 +92,7 @@ export function CategoryCard({
 
         {/* RIGHT HALF — Image + Background Icon + Description */}
         <div
-          className={`w-1/2 relative ${isLeft ? "text-left" : "text-right"}` }
+          className={`w-1/2 relative ${isLeft ? "text-left" : "text-right"}`}
         >
           {/* BACKGROUND ICON */}
           <div

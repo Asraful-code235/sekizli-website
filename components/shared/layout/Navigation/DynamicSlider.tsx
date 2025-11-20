@@ -46,7 +46,7 @@ export default function DynamicSlider({
               key={i}
               onClick={() => setIndex(i)}
               className={`w-2 h-2 rounded-full transition-all ${
-                index === i ? "bg-teal-800 scale-125" : "bg-gray-300"
+                index === i ? "bg-brand-primary/80 scale-125" : "bg-gray-300"
               }`}
             />
           ))}
