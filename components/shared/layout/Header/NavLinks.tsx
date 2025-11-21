@@ -45,7 +45,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
 
           const isHomePage = pathname === `/${locale}` || pathname === "/";
           const isActive = pathname === href || (isHomePage && index === 0);
-          
+
           return (
             <Link
               key={index}
@@ -85,7 +85,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
       >
         <SheetContent
           side='left'
-          className='min-w-screen w-full mt-20 p-8 bg-gray-100 flex justify-center'
+          className='min-w-screen w-full mt-20 p-8 bg-gray-100 flex justify-start'
         >
           <SheetHeader className='px-0'>
             <SheetTitle></SheetTitle>
@@ -112,7 +112,6 @@ export function NavLinks({ items, locale }: NavLinksProps) {
           )}
           {openSheet === "products" && (
             <div className='flex flex-col lg:flex-row gap-10 w-full'>
-              
               <div className='flex-1 h-full'>
                 <SheetCategoryCard
                   highlight='Electric'

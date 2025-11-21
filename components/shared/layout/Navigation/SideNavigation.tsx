@@ -13,9 +13,10 @@ interface SideNavItem {
 
 interface SideNavProps {
   items?: SideNavItem[];
+  locale: string;
 }
 
-export default function SideNavigation({ items }: SideNavProps) {
+export default function SideNavigation({ items, locale }: SideNavProps) {
   const pathname = usePathname();
   const [index, setIndex] = useState(0);
   const logos = [
@@ -59,22 +60,35 @@ export default function SideNavigation({ items }: SideNavProps) {
         <div className='relative'>
           <ul className='space-y-1 p-4 rounded-xl bg-white backdrop-blur-sm'>
             {items?.map((item, idx) => {
-              const isActive = pathname === item?.href;
-
+              const href = item.href?.startsWith("/")
+                ? `/${locale}${item.href}`
+                : item.href;
+              const isActive = pathname === href;
               return (
-                <li key={item?.href ?? idx}>
+                <li key={href ?? idx}>
                   <Link
-                    href={item?.href ?? "#"}
+                    href={href ?? "#"}
                     className={`
-                flex items-center text-sm font-medium px-4 py-3 rounded
-                transition-all border-b border-gray-200
-                ${
-                  isActive
-                    ? "bg-brand-primary/80 text-white"
-                    : "text-gray-800 hover:bg-brand-secondary/80 hover:text-black"
-                }
-              `}
+                      relative flex items-center text-sm font-medium px-4 py-3 rounded
+                      border-b border-gray-200 transition-all group
+                      ${isActive ? "bg-teal-700 text-white" : "text-gray-800"}
+                    `}
                   >
+                    {/* Sliding Hover Background (starts at 70% width) */}
+                    {!isActive && (
+                      <span
+                        className='
+                          absolute inset-0 
+                          w-full h-full
+                          bg-brand-secondary
+                          -z-10
+                          transform scale-x-[0.0] origin-left
+                          group-hover:scale-x-150
+                          transition-transform duration-400 ease-in-out
+                        '
+                      />
+                    )}
+
                     <span className='mr-2 text-lg leading-none'>»</span>
                     {item?.label ?? "Untitled"}
                   </Link>
