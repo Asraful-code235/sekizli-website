@@ -71,7 +71,7 @@ export default function SideNavigation({ items, locale }: SideNavProps) {
                     className={`
                       relative flex items-center text-sm font-medium px-4 py-3 rounded
                       border-b border-gray-200 transition-all group
-                      ${isActive ? "bg-teal-700 text-white" : "text-gray-800"}
+                      ${isActive ? "bg-brand-primary text-white" : "text-gray-800"}
                     `}
                   >
                     {/* Sliding Hover Background (starts at 70% width) */}
@@ -125,7 +125,7 @@ export default function SideNavigation({ items, locale }: SideNavProps) {
             </div>
 
             {/* Right Text */}
-            <p className='text-teal-700 text-md leading-relaxed font-semibold w-full mt-10'>
+            <p className='text-brand-primary text-md leading-relaxed font-semibold w-full mt-10'>
               Thousands of customers, tons of cargo, millions of hours of
               operation.
             </p>

@@ -41,7 +41,7 @@ export default function IntroFeatureSection({
               <a
                 href={item.href}
                 key={i}
-                className='flex items-center gap-2 text-gray-700 hover:text-teal-700 transition'
+                className='flex items-center gap-2 text-gray-700 hover:text-brand-primary transition'
               >
                 <div className='group flex items-center rounded-full border hover:bg-brand-primary/80 p-2'>
                   <ChevronRightIcon

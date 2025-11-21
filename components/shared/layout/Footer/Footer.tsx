@@ -77,7 +77,7 @@ function Footer({ data }: FooterProps) {
   after:h-[4px] 
   after:bg-[#00524d]"
                 >
-                  <h4 className="text-[10px] md:text-xs font-bold text-teal-900">
+                  <h4 className="text-[10px] md:text-xs font-bold text-brand-primary/50">
                     Sekizli Social Media Accounts
                   </h4>
 
@@ -110,7 +110,7 @@ function Footer({ data }: FooterProps) {
   after:h-[4px] 
   after:bg-[#00524d]"
                   >
-                    <h4 className="text-[10px] md:text-xs font-bold text-teal-900">
+                    <h4 className="text-[10px] md:text-xs font-bold text-brand-primary/50">
                       Sekizli Support Line
                     </h4>
 
@@ -118,8 +118,8 @@ function Footer({ data }: FooterProps) {
                       href={`tel:${data.supportPhone}`}
                       className="flex items-center justify-end gap-2"
                     >
-                      <Phone className="text-teal-700" size={20} />
-                      <span className="text-[10px] lg:text-lg font-bold text-teal-900">
+                      <Phone className="text-brand-primary" size={20} />
+                      <span className="text-[10px] lg:text-lg font-bold text-brand-primary/50">
                         {data.supportPhone}
                       </span>
                     </Link>
@@ -151,7 +151,7 @@ function Footer({ data }: FooterProps) {
                       <li key={j}>
                         <Link
                           href={link.url || "#"}
-                          className="hover:text-teal-700 text-[11px] sm:text-xs"
+                          className="hover:text-brand-primary text-[11px] sm:text-xs"
                         >
                           › {link.label}
                         </Link>
@@ -176,7 +176,7 @@ function Footer({ data }: FooterProps) {
                     <div key={i}>
                       <Link
                         href={`tel:${phone}`}
-                        className="text-teal-900 font-bold"
+                        className="text-brand-primary/80 font-bold"
                       >
                         {phone}
                       </Link>

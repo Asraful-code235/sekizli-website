@@ -108,7 +108,7 @@ export function About({ data }: AboutProps) {
 
               {ctaText && ctaLink && (
                 <Link href={ctaLink}>
-                  <button className="flex items-center space-x-3 text-[10px] sm:text-sm text-gray-600 hover:text-teal-700 transition-colors group">
+                  <button className="flex items-center space-x-3 text-[10px] sm:text-sm text-gray-600 hover:text-brand-primary transition-colors group">
                     <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-300 flex items-center justify-center group-hover:bg-brand-primary group-hover:text-white transition-colors">
                       <ArrowRight
                         size={18}
