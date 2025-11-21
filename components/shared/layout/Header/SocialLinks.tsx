@@ -18,7 +18,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
           href={social.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="xl:w-9 xl:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 hover:bg-brand-secondary transition-colors flex items-center justify-center"
+          className="xl:w-9 xl:h-9 w-3.5 h-3.5 sm:w-6 sm:h-6 hover:bg-brand-secondary transition-colors flex items-center justify-center rounded-full"
           aria-label={`Social link ${index + 1}`}
         >
           <Image

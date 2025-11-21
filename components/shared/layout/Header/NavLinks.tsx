@@ -12,8 +12,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import IntroFeatureSection from "./IntroFeatureSection";
-import { CategoryCard } from "@/features/home/components/CategoryCard";
 import { cn } from "@/lib/utils";
+import { SheetCategoryCard } from "./SheetCategoryCard";
 
 interface NavLinksProps {
   items: NavigationItem[];
@@ -26,21 +26,18 @@ export function NavLinks({ items, locale }: NavLinksProps) {
     null
   );
 
-  const handleHover = (title: string) => {
-    const normalized = title.toLowerCase();
-    if (normalized.includes("corporate")) {
-      setOpenSheet("corporate");
-    } else if (normalized.includes("products")) {
-      setOpenSheet("products");
-    }
+  const handleHover = (index: number) => {
+    if (index === 0) setOpenSheet("corporate");
+    else if (index === 1) setOpenSheet("products");
   };
+
 
   return (
     <div
-      className="hidden lg:flex items-center gap-3 xl:gap-5 relative"
+      className='hidden lg:flex items-center gap-3 xl:gap-5 relative'
       onMouseLeave={() => setOpenSheet(null)}
     >
-      <nav className="flex items-center gap-3 xl:gap-5 z-40">
+      <nav className='flex items-center gap-3 xl:gap-5 z-40'>
         {items.map((item, index) => {
           const href = item.link.startsWith("/")
             ? `/${locale}${item.link}`
@@ -48,24 +45,17 @@ export function NavLinks({ items, locale }: NavLinksProps) {
 
           const isHomePage = pathname === `/${locale}` || pathname === "/";
           const isActive = pathname === href || (isHomePage && index === 0);
-
-          const title = item.title || "";
-          const isSheetTrigger =
-            title.toLowerCase().includes("corporate") ||
-            title.toLowerCase().includes("product");
-
+          
           return (
             <Link
               key={index}
               href={href}
-              onMouseEnter={
-                isSheetTrigger ? () => handleHover(title) : undefined
-              }
+              onMouseEnter={index < 2 ? () => handleHover(index) : undefined}
               className={`relative group xl:text-[13px] text-[9px] font-semibold border-r border-gray-500 text-brand-primary pr-1 xl:pr-3`}
             >
               {/* animated top line */}
               <span
-                className="
+                className='
                 absolute left-0 -top-2
                 h-0.75 w-full
                 origin-right scale-x-0
@@ -73,7 +63,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
                 group-hover:scale-x-100
                 group-hover:bg-brand-primary
                 transition-all duration-300
-              "
+              '
               ></span>
               <span
                 className={cn(
@@ -94,18 +84,18 @@ export function NavLinks({ items, locale }: NavLinksProps) {
         }}
       >
         <SheetContent
-          side="left"
-          className="min-w-screen h-screen p-8 bg-gray-100 flex items-center justify-center"
+          side='left'
+          className='min-w-screen w-full mt-20 p-8 bg-gray-100 flex justify-center'
         >
-          <SheetHeader className="px-0">
+          <SheetHeader className='px-0'>
             <SheetTitle></SheetTitle>
           </SheetHeader>
           {openSheet === "corporate" && (
-            <div className="">
+            <div className=''>
               <IntroFeatureSection
-                title="Expert in High Precision and Balance"
-                subtitle="Millions of Hours of Experience, Customer Satisfaction"
-                image="/leftInt.png"
+                title='Expert in High Precision and Balance'
+                subtitle='Millions of Hours of Experience, Customer Satisfaction'
+                image='/leftInt.png'
                 items={[
                   { label: "About Us", href: "/about" },
                   { label: "Our Quality Policy", href: "/quality" },
@@ -121,75 +111,79 @@ export function NavLinks({ items, locale }: NavLinksProps) {
             </div>
           )}
           {openSheet === "products" && (
-            <div className="flex flex-col lg:flex-row gap-10">
-              <CategoryCard
-                highlight="Electric"
-                title="Crane Systems"
-                bgColor="bg-[#3f3f3f]"
-                image="/elektirik.png"
-                position="left"
-                listItems={[
-                  {
-                    title: "OVERHEAD TRAVELING CRANES",
-                    link: "/products/overhead-cranes",
-                    image: "/elektirik.png",
-                  },
-                  {
-                    title: "LIFTING GROUPS",
-                    link: "/products/lifting-groups",
-                    image: "/kancablokları.png",
-                  },
-                  {
-                    title: "GANTRY CRANES",
-                    link: "/products/gantry-cranes",
-                    image: "/elektirik.png",
-                  },
-                  {
-                    title: "JIB CRANES",
-                    link: "/products/jib-cranes",
-                    image: "/kancablokları.png",
-                  },
-                  {
-                    title: "SPECIAL PROCESS CRANES",
-                    link: "/products/special-cranes",
-                    image: "/elektirik.png",
-                  },
-                  {
-                    title: "CABIN CRANES",
-                    link: "/products/cabin-cranes",
-                    image: "/kancablokları.png",
-                  },
-                ]}
-                descriptions={[
-                  "Strong carrying capacity,",
-                  "Horizontal and vertical maneuverability,",
-                  "Electric and manual operation option,",
-                  "User-friendly electric crane systems offering easy",
-                  "operation with remote control",
-                ]}
-              />
+            <div className='flex flex-col lg:flex-row gap-10 w-full'>
+              
+              <div className='flex-1 h-full'>
+                <SheetCategoryCard
+                  highlight='Electric'
+                  title='Crane Systems'
+                  bgColor='bg-[#3f3f3f]'
+                  image='/elektirik.png'
+                  position='left'
+                  listItems={[
+                    {
+                      title: "OVERHEAD TRAVELING CRANES",
+                      link: "/products/overhead-cranes",
+                      image: "/elektirik.png",
+                    },
+                    {
+                      title: "LIFTING GROUPS",
+                      link: "/products/lifting-groups",
+                      image: "/kancablokları.png",
+                    },
+                    {
+                      title: "GANTRY CRANES",
+                      link: "/products/gantry-cranes",
+                      image: "/elektirik.png",
+                    },
+                    {
+                      title: "JIB CRANES",
+                      link: "/products/jib-cranes",
+                      image: "/kancablokları.png",
+                    },
+                    {
+                      title: "SPECIAL PROCESS CRANES",
+                      link: "/products/special-cranes",
+                      image: "/elektirik.png",
+                    },
+                    {
+                      title: "CABIN CRANES",
+                      link: "/products/cabin-cranes",
+                      image: "/kancablokları.png",
+                    },
+                  ]}
+                  descriptions={[
+                    "Strong carrying capacity,",
+                    "Horizontal and vertical maneuverability,",
+                    "Electric and manual operation option,",
+                    "User-friendly electric crane systems offering easy",
+                    "operation with remote control",
+                  ]}
+                />
+              </div>
 
-              {/* Section 2 */}
-              <CategoryCard
-                highlight="Spare"
-                title="Parts"
-                bgColor="bg-[#3f3f3f]"
-                image="/kancablokları.png"
-                listItems={[
-                  {
-                    title: "CRANE SPARE PARTS",
-                    link: "/products/spare-parts",
-                    image: "/elektirik.png",
-                  },
-                ]}
-                descriptions={[
-                  "Strong Durability",
-                  "Adaptability in All Directions,",
-                  "High Performance,",
-                  "5,000+ Spare Parts",
-                  "Easy Installation and Use Crane Spare Parts",
-                ]}
-              />
+              <div className='flex-1 h-full'>
+                <SheetCategoryCard
+                  highlight='Spare'
+                  title='Parts'
+                  bgColor='bg-[#3f3f3f]'
+                  image='/kancablokları.png'
+                  listItems={[
+                    {
+                      title: "CRANE SPARE PARTS",
+                      link: "/products/spare-parts",
+                      image: "/elektirik.png",
+                    },
+                  ]}
+                  descriptions={[
+                    "Strong Durability",
+                    "Adaptability in All Directions,",
+                    "High Performance,",
+                    "5,000+ Spare Parts",
+                    "Easy Installation and Use Crane Spare Parts",
+                  ]}
+                />
+              </div>
             </div>
           )}
         </SheetContent>
