@@ -17,7 +17,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
   return (
     <section
-      className="relative lg:h-[80vh] md:h-[60vh] h-[50vh] flex flex-col justify-end bg-black"
+      className="relative lg:h-[85vh] md:h-[60vh] h-[50vh] flex flex-col justify-end bg-black"
       onMouseEnter={() => setCurrent((prev) => (prev + 1) % data.slides.length)}
     >
       <div className="absolute inset-0 z-0">

@@ -60,7 +60,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
                 h-0.75 w-full
                 origin-right scale-x-0
                 bg-brand-secondary
-                group-hover:scale-x-100
+                group-hover:scale-x-115
                 group-hover:bg-brand-primary
                 transition-all duration-300
               '

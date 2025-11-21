@@ -1,3 +1,4 @@
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 interface CategoryNavItemProps {
@@ -22,14 +23,33 @@ export default function CategoryNavItem({
         ${isLeft ? "text-left" : "text-right"}
       `}
     >
-      <span className="relative z-10">{label}</span>
+      <span className='relative z-10 flex justify-between'>
+        {label}
+        <div className='group relative flex items-center'>
+          <ChevronLeft
+            className='
+            text-muted-foreground
+            opacity-0
+            pointer-events-none
+            size-4
+            shrink-0
+            translate-x-0
+            transition-all duration-300
+            group-hover:opacity-100
+            group-hover:text-white
+            group-hover:rotate-180
+          '
+          />
+          {/* your text or menu item here */}
+        </div>
+      </span>
       <span
-        className="
+        className='
           block h-0.5 bg-brand-secondary 
           absolute -bottom-1 
           w-0 group-hover:w-full
           transition-all duration-300
-        "
+        '
       ></span>
     </Link>
   );
