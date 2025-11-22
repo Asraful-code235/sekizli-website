@@ -127,7 +127,7 @@ export function NewsSection({ data }: { data: NewsSectionData }) {
                 type="single"
                 collapsible
                 className="w-full bg-white rounded-xl"
-                defaultValue="item-1"
+                defaultValue="item-3"
               >
                 {accordianItems.map((item, index) => (
                   <AccordionItem
@@ -145,7 +145,7 @@ export function NewsSection({ data }: { data: NewsSectionData }) {
                         alt={item.title}
                         width={800}
                         height={500}
-                        className="w-full rounded-lg object-cover"
+                        className="w-full rounded-lg object-contain"
                       />
                     </AccordionContent>
                   </AccordionItem>

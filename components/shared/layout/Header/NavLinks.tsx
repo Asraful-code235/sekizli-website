@@ -93,6 +93,7 @@ export function NavLinks({ items, locale }: NavLinksProps) {
           {openSheet === "corporate" && (
             <div className=''>
               <IntroFeatureSection
+                locale={locale}
                 title='Expert in High Precision and Balance'
                 subtitle='Millions of Hours of Experience, Customer Satisfaction'
                 image='/leftInt.png'

@@ -70,14 +70,14 @@ function Footer({ data }: FooterProps) {
 
                 <div
                   className="flex flex-col lg:flex-row items-center gap-5 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[25px] before:h-[4px] before:bg-[#00524d] after:content-[''] 
-  after:absolute 
-  after:left-0 
-  after:bottom-0 
-  after:w-[25px] 
-  after:h-[4px] 
-  after:bg-[#00524d]"
+                    after:absolute 
+                    after:left-0 
+                    after:bottom-0 
+                    after:w-[25px] 
+                    after:h-[4px] 
+                    after:bg-[#00524d]"
                 >
-                  <h4 className="text-[10px] md:text-xs font-bold text-brand-primary/50">
+                  <h4 className="text-[10px] md:text-xs font-semibold text-brand-primary">
                     Sekizli Social Media Accounts
                   </h4>
 
@@ -110,7 +110,7 @@ function Footer({ data }: FooterProps) {
   after:h-[4px] 
   after:bg-[#00524d]"
                   >
-                    <h4 className="text-[10px] md:text-xs font-bold text-brand-primary/50">
+                    <h4 className="text-[10px] md:text-xs font-semibold text-brand-primary">
                       Sekizli Support Line
                     </h4>
 
@@ -119,7 +119,7 @@ function Footer({ data }: FooterProps) {
                       className="flex items-center justify-end gap-2"
                     >
                       <Phone className="text-brand-primary" size={20} />
-                      <span className="text-[10px] lg:text-lg font-bold text-brand-primary/50">
+                      <span className="text-[10px] lg:text-lg font-semibold text-brand-primary">
                         {data.supportPhone}
                       </span>
                     </Link>
@@ -176,7 +176,7 @@ function Footer({ data }: FooterProps) {
                     <div key={i}>
                       <Link
                         href={`tel:${phone}`}
-                        className="text-brand-primary/80 font-bold"
+                        className="text-brand-primary font-bold"
                       >
                         {phone}
                       </Link>

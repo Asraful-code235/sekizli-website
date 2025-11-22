@@ -1,6 +1,7 @@
 import ContentHero from '@/components/shared/layout/ContentHero/ContentHero'
 import Footer from '@/components/shared/layout/Footer/Footer'
 import SideNavigation from '@/components/shared/layout/Navigation/SideNavigation'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { getLanguageDirection, isValidLanguageCode } from '@/lib/i18n'
 import { notFound } from 'next/navigation'
 
@@ -40,7 +41,9 @@ export default async function ContentLayout({
               { label: "Contact", href: "/contact" },
             ]}
           />
-          {children}
+          <div className='w-full'>
+            {children}
+          </div>
         </div>
         <Footer />
       </div>

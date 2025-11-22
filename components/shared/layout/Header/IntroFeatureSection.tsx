@@ -1,8 +1,10 @@
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
+import Link from "next/link";
 
 type IntroFeatureSectionProps = {
   title: string;
   subtitle: string;
+  locale: string;
   image: string; // local or remote
   items: {
     label: string;
@@ -15,6 +17,7 @@ export default function IntroFeatureSection({
   subtitle,
   image,
   items,
+  locale
 }: IntroFeatureSectionProps) {
   return (
     <section className='bg-white rounded-3xl p-10 lg:p-16'>
@@ -37,15 +40,20 @@ export default function IntroFeatureSection({
           <p className='text-lg text-gray-700 mb-10'>{subtitle}</p>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-            {items.map((item, i) => (
-              <a
-                href={item.href}
-                key={i}
-                className='flex items-center gap-2 text-gray-700 hover:text-brand-primary transition'
-              >
-                <div className='group flex items-center rounded-full border hover:bg-brand-primary/80 p-2'>
-                  <ChevronRightIcon
-                    className='
+            
+            {items.map((item, i) => {
+              const href = item.href.startsWith("/")
+                ? `/${locale}${item.href}`
+                : item.href;
+              return (
+                <Link
+                  href={href}
+                  key={i}
+                  className='flex items-center gap-2 text-gray-700 hover:text-brand-primary transition'
+                >
+                  <div className='group flex items-center rounded-full border hover:bg-brand-primary/80 p-2'>
+                    <ChevronRightIcon
+                      className='
                            text-muted-foreground
                            pointer-events-none
                            size-4
@@ -56,11 +64,12 @@ export default function IntroFeatureSection({
                            group-hover:text-white
                            
                            '
-                  />
-                </div>
-                {item.label}
-              </a>
-            ))}
+                    />
+                  </div>
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

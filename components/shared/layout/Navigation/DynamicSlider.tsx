@@ -21,7 +21,7 @@ export default function DynamicSlider({
 }: DynamicSliderProps) {
   const [index, setIndex] = useState(0);
 
-  const maxIndex = Math.max(0, logos.length - visibleCount);
+  const maxIndex = Math.max(0, logos.length / visibleCount);
 
   // Auto slide
   useEffect(() => {

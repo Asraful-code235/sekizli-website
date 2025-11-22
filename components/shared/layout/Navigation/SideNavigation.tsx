@@ -43,16 +43,16 @@ export default function SideNavigation({ items, locale }: SideNavProps) {
       <div className='relative shadow-md rounded-xl p-6 border border-gray-200 overflow-hidden'>
         {/* Background Image with Light Opacity */}
         <div className="absolute inset-0 bg-[url('/nav-bg.png')] bg-cover bg-center opacity-30" />
-        <div className='py-3 relative z-10'>
+        <div className='py-2 relative z-10'>
           <div className='flex items-center gap-4'>
-            <h1 className='whitespace-nowrap font-semibold'>
+            <h1 className='whitespace-nowrap font-semibold text-xl'>
               Sekizli
               <br />
               Machine & Crane
             </h1>
 
             {/* line */}
-            <div className='flex-1 h-px bg-gray-200'></div>
+            <div className='flex-1 h-px bg-gray-300'></div>
           </div>
         </div>
 
